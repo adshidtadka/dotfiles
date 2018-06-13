@@ -72,6 +72,8 @@ brew "imagemagick"
 brew "kubernetes-cli"
 # The Kubernetes package manager
 brew "kubernetes-helm"
+# for ctf
+brew 'libdnet'
 # Java-based project management
 brew "maven"
 # Cross platform, open source .NET development framework
