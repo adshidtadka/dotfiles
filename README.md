@@ -3,5 +3,5 @@
 ## Installation
 
 ```bash
-cd && git clone https://github.com/gky360/dotfiles.git && ./dotfiles/deploy.sh
+cd && git clone https://github.com/adshidtadka/dotfiles.git && ./dotfiles/deploy.sh
 ```
