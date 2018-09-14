@@ -22,7 +22,7 @@ SAVEHIST=1000000
 # PROMPT="%~ %# "
 # 2行表示
 
-PROMPT="%{${fg[$zshrc_prompt_color]}%}%n@%m:%{${reset_color}%}%~%# "
+PROMPT="%{${fg[$zshrc_prompt_color]}%}%n@%m:%{${reset_color}%}%~ %# "
 
 # 単語の区切り文字を指定する
 # autoload -Uz select-word-style
