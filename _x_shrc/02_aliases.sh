@@ -48,9 +48,9 @@ alias gb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 # svn
 alias sst='svn st'
 alias sdf='svn diff'
-alias sadd='svn stat | grep -e "^?" | awk '{ print $2 }' | xargs svn add'
-alias sdel='svn stat | grep -e "^\!" | awk '{ print $2 }' | xargs svn del'
-alias srev='svn stat | grep -e "^M" | awk '{ print $2 }' | xargs svn revert'
+alias sadd="svn stat | grep -e '^?'  | awk '{ print $2 }' | xargs svn add"
+alias sdel="svn stat | grep -e '^\!' | awk '{ print $2 }' | xargs svn del"
+alias srev="svn stat | grep -e '^M'  | awk '{ print $2 }' | xargs svn revert"
 
 # vagrant
 alias vain='vagrant up && vagrant ssh'
