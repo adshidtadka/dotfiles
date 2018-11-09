@@ -33,6 +33,8 @@ alias Prsb='bundle exec rails s -b 0.0.0.0 -e production'
 alias gst="git status"
 ## log graph
 alias ggr="git gr"
+## log graph long<
+alias ggrl="git log --graph --pretty=oneline"
 ## clear unused branches
 alias gbrcl="git branch --merged | grep -v '*' | xargs git branch -d"
 ## reset modes of the files
