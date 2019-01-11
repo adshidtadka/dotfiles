@@ -1,0 +1,38 @@
+---
+- hosts: all
+  remote_user: student
+  gather_facts: no
+
+  tasks:
+  - name: inventory_hostname is
+    debug: var=inventory_hostname
+  - name: current host name is
+    debug: var=ansible_hostname
+  - name: Update and upgrade apt packages
+    become: yes
+    apt:
+      upgrade: "yes"
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+#  - name: Upgrade all packages to the latest version
+#    become: root
+#    apt:
+#      name: "*"
+#      state: latest
+#  - name: Update all packages to the latest version
+#    apt:
+#      upgrade: dist
+  - name: Install a list of packages
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - aptitude
+      - ansible
+      - tmux
+      - nfs-kernel-server
+      - vim
+      - zsh
+      - build-essential
+      - cmake
+      - git
