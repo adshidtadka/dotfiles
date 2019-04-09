@@ -12,6 +12,9 @@
   core:
     disabledPackages: [
       "markdown-preview"
+      "seti-icons"
+      "atom-latex"
+      "latex-autocomplete"
     ]
     ignoredNames: [
       ".git"
@@ -32,7 +35,7 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
+      "atom-material-ui"
       "atom-material-syntax"
     ]
   editor:
@@ -46,7 +49,10 @@
   "exception-reporting":
     userId: "6f7b3b0e-bf39-46d9-95ce-d6fd2384407c"
   latex:
+    buildOnSave: true
     engine: "platex"
+    openResultAfterBuild: false
+    openResultInBackground: false
   "linter-ui-default":
     statusBarRepresents: "Current File"
   "markdown-preview-plus":
