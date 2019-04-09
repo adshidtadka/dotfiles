@@ -40,7 +40,7 @@
     ]
   editor:
     autoIndent: false
-    fontFamily: "Myrica M"
+    fontFamily: "Ricty Diminished"
     fontSize: 15
     preferredLineLength: 100
     scrollPastEnd: true
