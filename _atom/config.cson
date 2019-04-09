@@ -31,7 +31,12 @@
       "*.ttt"
     ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-material-syntax"
+    ]
   editor:
+    autoIndent: false
     fontFamily: "Myrica M"
     preferredLineLength: 100
     scrollPastEnd: true
