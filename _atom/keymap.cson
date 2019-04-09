@@ -10,7 +10,8 @@
 #
 # Here's an example taken from Atom's built-in keymap:
 #
-# 'atom-text-editor':
+ 'atom-text-editor':
+    'ctrl-shift-h': 'atom-beautify:beautify-language-html'
 #   'enter': 'editor:newline'
 #
 # 'atom-workspace':

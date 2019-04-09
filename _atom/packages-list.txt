@@ -6,7 +6,6 @@ editorconfig@2.2.2
 ex-mode@0.18.0
 file-icons@2.1.19
 git-time-machine@1.5.9
-hex-editor@0.1.1
 hydrogen@2.4.1
 intentions@1.1.5
 language-latex@1.1.1
