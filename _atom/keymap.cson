@@ -10,9 +10,9 @@
 #
 # Here's an example taken from Atom's built-in keymap:
 #
- 'atom-text-editor':
-    'ctrl-shift-h': 'atom-beautify:beautify-language-html'
-#   'enter': 'editor:newline'
+'atom-text-editor':
+  'ctrl-shift-h': 'atom-beautify:beautify-language-html'
+  # 'enter': 'editor:newline'
 #
 # 'atom-workspace':
 #   'ctrl-shift-p': 'core:move-up'
@@ -31,3 +31,15 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
+
+# autocomplete-plusでtab次候補
+'body atom-text-editor.autocomplete-active':
+  'tab': 'autocomplete-plus:move-down'
+  'shift-tab': 'autocomplete-plus:move-up'
+  'enter': 'autocomplete-plus:confirm'
+  'ctrl-p': 'autocomplete-plus:move-up'
+  'ctrl-n': 'autocomplete-plus:move-down'
+
+# phpでもemetを有効にする
+'atom-text-editor[data-grammar="text html basic"]:not([mini]), atom-text-editor[data-grammar~="erb"]:not([mini]), atom-text-editor[data-grammar~="jade"]:not([mini]), atom-text-editor[data-grammar~="css"]:not([mini]), atom-text-editor[data-grammar~="stylus"]:not([mini]), atom-text-editor[data-grammar~="sass"]:not([mini]), atom-text-editor[data-grammar~="scss"]:not([mini]), atom-text-editor[data-grammar~="php"]:not([mini])':
+  'tab': 'emmet:expand-abbreviation-with-tab'

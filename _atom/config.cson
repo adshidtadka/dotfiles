@@ -15,6 +15,7 @@
       "seti-icons"
       "atom-latex"
       "latex-autocomplete"
+      "sync-settings"
     ]
     ignoredNames: [
       ".git"
@@ -39,7 +40,6 @@
       "atom-material-syntax"
     ]
   editor:
-    autoIndent: false
     fontFamily: "Ricty Diminished"
     fontSize: 15
     preferredLineLength: 100
@@ -57,7 +57,8 @@
   "linter-ui-default":
     statusBarRepresents: "Current File"
   "markdown-preview-plus":
-    enableLatexRenderingByDefault: true
+    mathConfig:
+      enableLatexRenderingByDefault: true
     useGitHubStyle: true
   minimap: {}
   "spell-check":
