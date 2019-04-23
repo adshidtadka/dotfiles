@@ -1,4 +1,5 @@
 "*":
+  Hydrogen: {}
   "atom-beautify":
     python:
       beautify_on_save: true
@@ -11,11 +12,13 @@
     useKite: false
   core:
     disabledPackages: [
-      "markdown-preview"
       "seti-icons"
       "atom-latex"
       "latex-autocomplete"
       "sync-settings"
+      "markdown-scroll-sync"
+      "markdown-preview"
+      "emmet"
     ]
     ignoredNames: [
       ".git"
@@ -52,13 +55,18 @@
   latex:
     buildOnSave: true
     engine: "platex"
-    openResultAfterBuild: false
     openResultInBackground: false
+    opener: "pdf-view"
   "linter-ui-default":
+    panelHeight: 222
     statusBarRepresents: "Current File"
   "markdown-preview-plus":
     mathConfig:
       enableLatexRenderingByDefault: true
+    previewConfig:
+      activatePreviewWithEditor: true
+    syncConfig:
+      syncPreviewOnChange: true
     useGitHubStyle: true
   minimap: {}
   "spell-check":

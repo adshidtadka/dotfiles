@@ -43,3 +43,6 @@
 # phpでもemetを有効にする
 'atom-text-editor[data-grammar="text html basic"]:not([mini]), atom-text-editor[data-grammar~="erb"]:not([mini]), atom-text-editor[data-grammar~="jade"]:not([mini]), atom-text-editor[data-grammar~="css"]:not([mini]), atom-text-editor[data-grammar~="stylus"]:not([mini]), atom-text-editor[data-grammar~="sass"]:not([mini]), atom-text-editor[data-grammar~="scss"]:not([mini]), atom-text-editor[data-grammar~="php"]:not([mini])':
   'tab': 'emmet:expand-abbreviation-with-tab'
+
+'atom-text-editor[data-grammar~="md"], webview.markdown-preview-plus':
+  'ctrl-shift-M': 'markdown-preview-plus:toggle'
