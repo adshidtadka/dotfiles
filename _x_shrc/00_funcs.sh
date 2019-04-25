@@ -19,8 +19,8 @@ function gpwo() {
 ## side-by-side diff
 # alias gdf='if [[ -x `which cdiff 2>/dev/null` ]]; then; git diff $@ | cdiff -s; else; git diff $@; fi'
 function gdf() {
-  if [[ -x `which cdiff 2>/dev/null` ]]; then
-    git diff $@ | cdiff -s -w 0
+  if [[ -x `which ydiff 2>/dev/null` ]]; then
+    git diff $@ | ydiff -s -w 0
   else
     git diff $@
   fi
@@ -28,8 +28,8 @@ function gdf() {
 
 ## side-by-side diff --cached
 function gdfca() {
-  if [[ -x `which cdiff 2>/dev/null` ]]; then
-    git diff --cached $@ | cdiff -s -w 0
+  if [[ -x `which ydiff 2>/dev/null` ]]; then
+    git diff --cached $@ | ydiff -s -w 0
   else
     git diff --cached $@
   fi
@@ -37,8 +37,8 @@ function gdfca() {
 
 ## side-by-side show
 function gsh() {
-  if [[ -x `which cdiff 2>/dev/null` ]]; then
-    git show $@ | cdiff -s
+  if [[ -x `which ydiff 2>/dev/null` ]]; then
+    git show $@ | ydiff -s
   else
     git show $@
   fi
