@@ -31,6 +31,8 @@ alias Prsb='bundle exec rails s -b 0.0.0.0 -e production'
 # git
 ## status
 alias gst="git status"
+## branch
+alias gbr="git branch"
 ## log graph
 alias ggr="git gr"
 ## log graph long<
