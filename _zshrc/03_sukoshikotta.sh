@@ -56,8 +56,15 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 # vcs_info
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
+autoload -Uz colors
+colors
 
-zstyle ':vcs_info:*' formats "%F{$zshrc_prompt_color}(%s)-[%b]%f"
+setopt prompt_subst
+
+zstyle ':vcs_info:git:*' check-for-changes true #formats 設定項目で %c,%u が使用可
+zstyle ':vcs_info:git:*' stagedstr "%F{cyan}!" #commit されていないファイルがある
+zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+" #add されていないファイルがある
+zstyle ':vcs_info:*' formats "%F{$zshrc_prompt_color}%c%u(%s)-[%b]%f"
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
 
 function _update_vcs_info_msg() {
