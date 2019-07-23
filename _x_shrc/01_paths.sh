@@ -50,13 +50,11 @@ export PATH=$PATH:$GOPATH/bin
 export ATCLI_ROOT=${GOPATH}/src/github.com/gky360/contests/atcoder
 
 # cplex
-if command_exists 'cplex' ; then
-  export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
-  export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
-fi
+export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
+export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
 
 # node
-if command_exists 'node' ; then
+if command_exists 'nodebrew' ; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 
