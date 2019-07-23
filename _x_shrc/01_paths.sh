@@ -49,9 +49,16 @@ export PATH=$PATH:$GOPATH/bin
 # atcli
 export ATCLI_ROOT=${GOPATH}/src/github.com/gky360/contests/atcoder
 
-#cplex
-export PATH=$PATH:/Users/takaaki/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
-export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
+# cplex
+if command_exists 'cplex' ; then
+  export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
+  export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
+fi
+
+# node
+if command_exists 'node' ; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
 
 # nvm
 # 参考: [NVM の nvm.sh を遅延ロードしてシェルの起動を高速化する - Qiita](http://qiita.com/uasi/items/80865646607b966aedc8)
