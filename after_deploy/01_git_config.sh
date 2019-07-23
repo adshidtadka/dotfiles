@@ -6,10 +6,10 @@ if command_exists git ; then
   if [ "`git remote -v | grep scarletrunner7000`" ]; then
     if [ "`git remote -v | grep https`" ]; then
       # https
-      new_origin='https://github.com/gky360/dotfiles.git'
+      new_origin='https://github.com/adshidtadka/dotfiles.git'
     else
       # ssh
-      new_origin='git@github.com:gky360/dotfiles.git'
+      new_origin='git@github.com:adshidtadka/dotfiles.git'
     fi
     set -x
     git remote set-url origin $new_origin
@@ -17,8 +17,8 @@ if command_exists git ; then
   fi
 
   # user and email
-  git config --global user.name gky360
-  git config --global user.email gky360@gmail.com
+  git config --global user.name adshidtadka
+  git config --global user.email nextage900fx@gmail.com
 
   # ghq config
   git config --global ghq.root ~/dev/src
