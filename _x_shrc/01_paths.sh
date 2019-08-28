@@ -80,3 +80,8 @@ fi
 if [ -s $HOME/.opam ]; then
   . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
+
+# android-studio
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK/emulator
+export PATH=$PATH:$ANDROID_SDK/platform-tools
