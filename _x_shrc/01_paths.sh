@@ -43,7 +43,8 @@ if [ -e $TEXLIVE_BIN ]; then
 fi
 
 # go
-export GOPATH="$HOME/dev"
+
+export GOPATH="$HOME/.go"
 export PATH=$PATH:$GOPATH/bin
 
 # atcli
