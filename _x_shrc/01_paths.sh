@@ -86,3 +86,6 @@ fi
 export ANDROID_SDK=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK/emulator
 export PATH=$PATH:$ANDROID_SDK/platform-tools
+
+# mysql
+export PATH=/usr/local/mysql/bin:$PATH
