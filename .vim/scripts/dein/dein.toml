@@ -35,3 +35,6 @@ hook_add = 'source ~/.vim/scripts/plugins/ale.vim'
 
 [[plugins]]
 repo = 'embear/vim-localvimrc'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
