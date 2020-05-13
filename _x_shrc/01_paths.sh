@@ -51,8 +51,8 @@ export PATH=$PATH:$GOPATH/bin
 export ATCLI_ROOT=${GOPATH}/src/github.com/gky360/contests/atcoder
 
 # cplex
-export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
-export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
+# export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
+# export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
 
 # node
 if command_exists 'nodebrew' ; then
@@ -83,9 +83,9 @@ if [ -s $HOME/.opam ]; then
 fi
 
 # android-studio
-export ANDROID_SDK=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK/emulator
-export PATH=$PATH:$ANDROID_SDK/platform-tools
+# export ANDROID_SDK=$HOME/Library/Android/sdk
+#export PATH=$PATH:$ANDROID_SDK/emulator
+# export PATH=$PATH:$ANDROID_SDK/platform-tools
 
 # mysql
-export PATH=/usr/local/mysql/bin:$PATH
+# export PATH=/usr/local/mysql/bin:$PATH
