@@ -22,7 +22,7 @@ SAVEHIST=1000000
 # PROMPT="%~ %# "
 # 2行表示
 
-PROMPT="%(?.%{${fg[$zshrc_prompt_color]}%}.%{${fg[red]}%})%n@%m:%{${reset_color}%}%~ %# "
+# PROMPT="%(?.%{${fg[$zshrc_prompt_color]}%}.%{${fg[red]}%})%n@%m:%{${reset_color}%}%~ %# "
 # PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})[%n@%m]%{${reset_color}%} %# "
 
 # 単語の区切り文字を指定する
@@ -71,7 +71,7 @@ function _update_vcs_info_msg() {
     LANG=en_US.UTF-8 vcs_info
     RPROMPT="${vcs_info_msg_0_} %{${fg[$zshrc_prompt_color]}%}%*%{${reset_color}%}"
 }
-add-zsh-hook precmd _update_vcs_info_msg
+# add-zsh-hook precmd _update_vcs_info_msg
 
 ########################################
 # オプション
