@@ -9,5 +9,5 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-let g:user_emmet_leader_key='<C-Z>'
+"let g:user_emmet_leader_key='<C-Z>'
 autocmd FileType html,css,jsx,javascript.jsx,javascript,tsx,typescript.jsx,typescript,eruby,xhtml,php,twig EmmetInstall
