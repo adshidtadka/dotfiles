@@ -13,7 +13,7 @@ else
 endif
 
 set t_Co=256
-colorscheme molokai
+colorscheme lucius
 syntax on
 
 " StatusLine {{{1
@@ -112,7 +112,10 @@ let g:lightline = {
       \  },
       \  'component_function': {
       \    'ale': 'ALEStatus'
-      \  }
+      \  },
+      \  'colorscheme': 'wombat',
+      \  'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+      \  'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
       \}
 
 function! ALEStatus()
