@@ -38,3 +38,9 @@ repo = 'embear/vim-localvimrc'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'

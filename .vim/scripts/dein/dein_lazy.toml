@@ -42,7 +42,7 @@ hook_source = 'source ~/.vim/scripts/plugins/vimtex.vim'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css', 'jsx', 'javascript.jsx', 'javascript', 'tsx', 'typescript.jsx', 'typescript', 'eruby', 'xhtml', 'php', 'twig']
+on_ft = ['html', 'css', 'jsx', 'javascript.jsx', 'javascript', 'tsx', 'typescript.jsx', 'typescript', 'eruby', 'xhtml', 'php', 'twig', 'vue']
 hook_source = 'source ~/.vim/scripts/plugins/emmet-vim.vim'
 
 # HTML5 ominicomplete & syntax
@@ -127,5 +127,5 @@ repo = 'tpope/vim-rails'
 on_ft = ['ruby']
 
 [[plugins]]
-repo = 'preservim/nerdtree'
-hook_source = 'source ~/.vim/scripts/plugins/nerdtree.vim' 
+repo = 'posva/vim-vue'
+on_ft = ['vue']
