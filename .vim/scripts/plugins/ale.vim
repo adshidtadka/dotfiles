@@ -1,6 +1,6 @@
 let g:ale_fixers = {
       \  'cpp': ['clang-format'],
-      \  'javascript': ['eslint'],
+      \  'javascript': ['prettier-eslint'],
       \  'vue': ['prettier-eslint'],
       \  'typescript': ['eslint'],
       \  'php': ['phpcbf'],
