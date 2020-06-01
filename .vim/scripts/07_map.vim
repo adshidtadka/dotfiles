@@ -23,6 +23,12 @@ xnoremap  [Space]   <Nop>
 " key map ^,$ to <Space>h,l. Because ^ and $ is difficult to type and damage little finger!!!
 noremap [Space]h ^
 noremap [Space]l $
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+nnoremap gj j
+nnoremap gk k
 
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
