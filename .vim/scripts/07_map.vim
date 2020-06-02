@@ -20,9 +20,9 @@ nmap  <Space>   [Space]
 xmap  <Space>   [Space]
 nnoremap  [Space]   <Nop>
 xnoremap  [Space]   <Nop>
-" key map ^,$ to <Space>h,l. Because ^ and $ is difficult to type and damage little finger!!!
-noremap [Space]h ^
-noremap [Space]l $
+
+noremap <C-h> ^
+noremap <C-l> $
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
