@@ -23,12 +23,22 @@ xnoremap  [Space]   <Nop>
 
 noremap <C-h> ^
 noremap <C-l> $
+
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 nnoremap gj j
 nnoremap gk k
+
+vnoremap j gj
+vnoremap k gk
+vnoremap <Down> gj
+vnoremap <Up>   gk
+vnoremap gj j
+vnoremap gk k
+
+
 
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
