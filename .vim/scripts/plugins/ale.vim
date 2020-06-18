@@ -1,7 +1,7 @@
 let g:ale_fixers = {
       \  'cpp': ['clang-format'],
-      \  'javascript': ['prettier-eslint'],
-      \  'html': ['prettier-eslint'],
+      \  'javascript': ['prettier'],
+      \  'html': ['prettier'],
       \  'vue': ['prettier-eslint'],
       \  'typescript': ['eslint'],
       \  'php': ['phpcbf'],
