@@ -3,7 +3,7 @@ let g:ale_fixers = {
       \  'javascript': ['prettier'],
       \  'html': ['prettier'],
       \  'vue': ['prettier-eslint'],
-      \  'typescript': ['eslint'],
+      \  'typescript': ['prettier'],
       \  'php': ['phpcbf'],
       \  'python': ['autopep8'],
       \  'yaml': ['prettier'],
