@@ -7,8 +7,6 @@ alias lh='ls -lah'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-# sudo の後のコマンドでエイリアスを有効にする
-alias sudo='sudo '
 
 # dotfiles
 alias dotfiles="cd $DOTPATH"
