@@ -8,6 +8,7 @@ let g:ale_fixers = {
       \  'python': ['autopep8'],
       \  'yaml': ['prettier'],
       \  'json': ['prettier'],
+      \  'css': ['prettier'],
       \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
