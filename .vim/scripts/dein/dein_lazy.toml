@@ -129,3 +129,9 @@ on_ft = ['ruby']
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = ['vue']
+
+ [[plugins]]
+repo = 'soramugi/auto-ctags.vim'
+hook_add = '''
+    let g:auto_ctags = 1
+'''
