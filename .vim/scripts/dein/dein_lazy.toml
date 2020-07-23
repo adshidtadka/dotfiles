@@ -135,3 +135,10 @@ repo = 'soramugi/auto-ctags.vim'
 hook_add = '''
     let g:auto_ctags = 1
 '''
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build = '''
+cd app & yarn install
+'''
