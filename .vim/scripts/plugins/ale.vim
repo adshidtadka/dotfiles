@@ -9,6 +9,7 @@ let g:ale_fixers = {
       \  'yaml': ['prettier'],
       \  'json': ['prettier'],
       \  'css': ['prettier'],
+      \  'ruby': ['rubocop'],
       \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
