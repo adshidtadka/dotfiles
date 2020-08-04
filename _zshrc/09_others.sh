@@ -6,3 +6,21 @@ setopt combining_chars
 # curl で no matches found と怒られるのを防ぐ
 alias curl='noglob curl'
 
+
+# history
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=1000000
+
+# share .zshhistory
+setopt inc_append_history
+setopt share_history
+
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
