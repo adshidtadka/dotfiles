@@ -2,7 +2,7 @@ let g:ale_fixers = {
       \  'cpp': ['clang-format'],
       \  'javascript': ['prettier'],
       \  'html': ['prettier'],
-      \  'vue': ['prettier-eslint'],
+      \  'vue': ['prettier'],
       \  'typescript': ['prettier'],
       \  'php': ['phpcbf'],
       \  'python': ['autopep8'],
