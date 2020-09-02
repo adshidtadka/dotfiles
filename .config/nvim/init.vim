@@ -28,6 +28,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
