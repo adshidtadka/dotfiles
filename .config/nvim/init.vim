@@ -19,9 +19,7 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
 Plug 'jonathanfilip/vim-lucius'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
@@ -29,6 +27,52 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'w0ng/vim-hybrid'
+" Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+" A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+nnoremap <C-k>f :<C-u>GFiles<CR>
+nnoremap <C-k>gg :<C-u>RipGrep<CR>
+nnoremap <C-k>gs :<C-u>Gstatus<CR>
+nnoremap <C-k>gd :<C-u>Gdiff<CR>
+nnoremap <C-k>gb :<C-u>Gblame<CR>
+nnoremap <C-k>gl :<C-u>Glog<CR>
+command! -bang -nargs=* RipGrep
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:60%:wrap'))
+command! -bang -nargs=? GFiles
+      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+Plug 'Yggdroot/indentLine'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'easymotion/vim-easymotion'
+Plug 'unblevable/quick-scope'
+Plug 'djoshea/vim-autoread'
+Plug 'c9s/hypergit.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+\   'coc-marketplace',
+\   'coc-lists',
+\   'coc-python',
+\   'coc-rls',
+\   'coc-json',
+\   'coc-yaml',
+\   'coc-html',
+\   'coc-emmet',
+\   'coc-css',
+\   'coc-tsserver',
+\   'coc-prettier',
+\   'coc-pairs',
+\   'coc-java',
+\   'coc-snippets',
+\ ]
 
 call plug#end()
 
