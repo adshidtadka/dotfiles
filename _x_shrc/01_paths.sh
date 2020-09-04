@@ -91,4 +91,4 @@ fi
 # export PATH=/usr/local/mysql/bin:$PATH
 
 # editor
-export EDITOR=vim
+export EDITOR=nvim
