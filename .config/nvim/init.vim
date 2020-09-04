@@ -35,7 +35,8 @@ Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>
-nnoremap <C-k>gg :<C-u>RipGrep<CR>
+nnoremap <C-k>rg :<C-u>RipGrep<CR>
+nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
 nnoremap <C-k>gs :<C-u>Gstatus<CR>
 nnoremap <C-k>gd :<C-u>Gdiff<CR>
 nnoremap <C-k>gb :<C-u>Gblame<CR>
@@ -43,6 +44,10 @@ nnoremap <C-k>gl :<C-u>Glog<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:60%:wrap'))
+command! -bang -nargs=* RipGrepDistinct
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --hidden --color=always -i '.shellescape(<q-args>), 0,
       \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:60%:wrap'))
 command! -bang -nargs=? GFiles
       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
