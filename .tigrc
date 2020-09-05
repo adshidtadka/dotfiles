@@ -1,6 +1,12 @@
+# 参考: https://qiita.com/sfus/items/063797a1dd8fdc7d032f
+
 # + で commit --amend
 bind generic +      !git commit --amend --allow-empty
+
+# ^ で reset --soft
+bind generic ^      ?git reset --soft HEAD^
 
 # x でトラッキングされていないファイルをすべて削除
 bind main    x      ?git clean -d -f
 bind status  x      ?git clean -d -f
+
