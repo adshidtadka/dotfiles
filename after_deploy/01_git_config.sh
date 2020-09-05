@@ -53,5 +53,7 @@ if command_exists git ; then
   git config --global alias.cmad '!git commit --amend --date'
   # set upstream
   git config --global alias.pushu 'push -u'
+  # set default editor
+  git config --global core.editor "nvim"
 fi
 
