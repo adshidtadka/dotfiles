@@ -1,0 +1,6 @@
+# + で commit --amend
+bind generic +      !git commit --amend --allow-empty
+
+# x でトラッキングされていないファイルをすべて削除
+bind main    x      ?git clean -d -f
+bind status  x      ?git clean -d -f
