@@ -12,3 +12,4 @@ autoload -Uz colors && colors
 # 2行表示
 PROMPT="%{${fg[$zshrc_prompt_color]}%}%n@%m:%{${reset_color}%}%~
 %{%(?.$fg[white].$fg[red])%}%#%{$reset_color%} "
+RPROMPT="%{${fg[$zshrc_prompt_color]}%}%*%{${reset_color}%}"
