@@ -13,10 +13,6 @@ export PATH=$HOME/.local/bin:$PATH
 # brew
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
 
-# zsh-completions
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
 
 # ruby, rails
 export PATH="$HOME/.rbenv/bin:$PATH"

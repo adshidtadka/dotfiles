@@ -7,6 +7,7 @@ export DOTPATH
 
 cd $DOTPATH
 
+
 echo
 for before_deploy_sh in $DOTPATH/before_deploy/*.sh; do
   echo "loading $before_deploy_sh ..."
@@ -39,6 +40,22 @@ for dotfile in .??*; do
   ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
 
 done
+
+select_theme_color () {
+  if [ ! $theme_color ] ; then
+    export theme_color='green'
+  fi
+  echo "Select theme color from below. Default is '$theme_color'."
+  echo "  [black, red, green, yellow, blue, magenta, cyan, white]"
+  /bin/echo -n "theme color > "
+  read tmp_theme_color
+  if [ $tmp_theme_color ] ; then
+    export theme_color=$tmp_theme_color
+  fi
+  echo "theme_color = $theme_color"
+}
+
+select_theme_color
 
 echo
 echo "loading .bashrc ..."
