@@ -1,5 +1,3 @@
 #!/bin/sh
 
-function command_exists () {
-  command -v "$1" >/dev/null 2>&1 ;
-}
+. $DOTPATH/_x_shrc/00_funcs.sh
