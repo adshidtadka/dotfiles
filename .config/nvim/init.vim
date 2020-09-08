@@ -57,7 +57,8 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 Plug 'Yggdroot/indentLine'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-let g:Hexokinase_highlighters = [ 'virtual' ]
+let g:Hexokinase_highlighters = [ 'foreground' ]
+set termguicolors
 Plug 'easymotion/vim-easymotion'
 Plug 'unblevable/quick-scope'
 Plug 'djoshea/vim-autoread'
