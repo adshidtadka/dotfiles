@@ -7,11 +7,11 @@ export DOTPATH
 
 cd $DOTPATH
 
-# echo
-# for before_deploy_sh in $DOTPATH/before_deploy/*.sh; do
-#   echo "loading $before_deploy_sh ..."
-#   . $before_deploy_sh
-# done
+echo
+for before_deploy_sh in $DOTPATH/before_deploy/*.sh; do
+  echo "loading $before_deploy_sh ..."
+  . $before_deploy_sh
+done
 
 echo
 for dotfile in .??*; do
