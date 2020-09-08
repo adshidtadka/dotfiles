@@ -1,5 +1,13 @@
 # 参考: https://qiita.com/sfus/items/063797a1dd8fdc7d032f
 
+# C で commit (refs での C は checkout, main での C は cherry-pick だが上書きする)
+bind generic C      !git commit
+bind refs    C      !git commit
+bind main    C      !git commit
+
+# Alt-c で commit --allow-empty
+bind generic <Esc>c !git commit --allow-empty
+
 # + で commit --amend
 bind generic +      !git commit --amend --allow-empty
 
@@ -30,3 +38,8 @@ bind diff    I      ?git rebase -i %(branch)
 bind refs    I      ?git rebase -i %(branch)
 bind main    <Esc>i ?git rebase -i %(commit)
 bind diff    <Esc>i ?git rebase -i %(commit)
+
+# L で reflog
+bind generic L      :!git reflog
+# _ で指定 reflog 番号にリセット
+bind generic _      ?git reset --hard HEAD@{"%(prompt Enter HEAD@{} number: )"}
