@@ -1,29 +1,11 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": [
-                "compile_flags.txt",
-                "compile_commands.json"
-            ],
-            "filetypes": [
-                "c",
-                "cc",
-                "cpp",
-                "c++",
-                "objc",
-                "objcpp"
-            ]
-        },
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": [
-                "go.mod"
-            ],
-            "disableWorkspaceFolders": true,
-            "filetypes": [
-                "go"
-            ]
-        }
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
     }
+  },
+  "clangd.path": "~/dotfiles/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }
