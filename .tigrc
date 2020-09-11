@@ -37,3 +37,7 @@ bind diff    I      ?git rebase -i %(commit)
 bind generic L      :!git reflog
 # _ で指定 reflog 番号にリセット
 bind generic _      ?git reset --hard HEAD@{"%(prompt Enter HEAD@{} number: )"}
+
+# K で cherry-pick (default: 'C')
+bind main    K      ?git cherry-pick %(commit)
+bind diff    K      ?git cherry-pick %(commit)
