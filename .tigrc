@@ -32,6 +32,9 @@ bind refs    R      ?git rebase %(branch)
 bind main    <Esc>r ?git rebase %(commit)
 bind diff    <Esc>r ?git rebase %(commit)
 
+# ! で revert
+bind main    !      ?git revert %(commit)
+
 # I で rebase -i
 bind main    I      ?git rebase -i %(branch)
 bind diff    I      ?git rebase -i %(branch)
