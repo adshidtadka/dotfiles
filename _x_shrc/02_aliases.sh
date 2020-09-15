@@ -1,10 +1,6 @@
 #!/bin/sh
 
 # basic
-alias ls='exa --icons'
-alias ll='ls -lh'
-alias la='ls -lah'
-alias lt='ls -lah --tree'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'

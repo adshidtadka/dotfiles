@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# exa
+alias ls='exa --icons'
+alias ll='ls -lh'
+alias la='ls -lah'
+alias lt='ls -lah --tree'
+
 # fasd
 eval "$(fasd --init auto)"
 alias a='fasd -a'        # any
