@@ -231,14 +231,21 @@ alias gtv='git verify-tag'
 # Working Copy (w)
 alias gws='git status --short'
 alias gwS='git status'
-alias gwd='git diff --no-ext-diff'
 alias gwD='git diff --no-ext-diff --word-diff'
 alias gwr='git reset --soft'
 alias gwR='git reset --hard'
-alias gwc='git clean -n'
-alias gwC='git clean -f'
+alias gwc='git clean -dn'
+alias gwC='git clean -df'
 alias gwx='git rm -r'
 alias gwX='git rm -rf'
+
+function gwd() {
+  if [[ -x `which ydiff 2>/dev/null` ]]; then
+    git diff $@ | ydiff -s -w 0
+  else
+    git diff $@
+  fi
+}
 
 # svn
 alias sst='svn st'
