@@ -39,7 +39,12 @@ fi
 
 # peco
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    if command_exists tac ; then
+      BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
+    else
+      BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    fi
+
     CURSOR=$#BUFFER
     zle reset-prompt
 }
