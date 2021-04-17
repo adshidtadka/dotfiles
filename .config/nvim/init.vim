@@ -19,6 +19,7 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'adelarsq/vim-matchit'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
