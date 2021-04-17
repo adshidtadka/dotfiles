@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
