@@ -38,9 +38,6 @@ vnoremap <Up>   gk
 vnoremap gj j
 vnoremap gk k
 
-" Paste sequentially
-vnoremap <silent> <C-p> "0p<CR>
-
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
 cnoremap <C-k> <UP>
