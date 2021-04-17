@@ -10,10 +10,6 @@ if IsMac()
   noremap \ ¥
 endif
 
-" Define mapleader
-let g:mapleader = ','
-let g:maplocalleader = ','
-
 " Smart space mapping
 " Notice: when starting other <Space> mappings in noremap, disappeared [Space]
 nmap  <Space>   [Space]
