@@ -51,8 +51,8 @@ export ATCLI_ROOT=${GOPATH}/src/github.com/gky360/contests/atcoder
 # export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
 
 # node
-if command_exists 'nodebrew' ; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
+if command_exists 'nodenv' ; then
+  eval "$(nodenv init -)"
 fi
 
 # nvm
