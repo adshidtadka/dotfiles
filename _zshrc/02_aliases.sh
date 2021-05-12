@@ -37,14 +37,22 @@ if command_exists fasd ; then
   alias zz='fasd_cd -d -i' # cd with interactive selection
 fi
 
+function peco-fasd() {
+    DESTINATION=`fasd -ld | peco --query "$LBUFFER"`
+    BUFFER="cd $DESTINATION"
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-fasd
+bindkey '^X' peco-fasd
+
 # peco
 function peco-history-selection() {
     if command_exists tac ; then
-      BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
+      BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER"`
     else
-      BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+      BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --query "$LBUFFER"`
     fi
-
     CURSOR=$#BUFFER
     zle reset-prompt
 }
