@@ -9,3 +9,7 @@ else
     export ZPLUG_HOME="$HOME"/.zplug
 fi
 source $ZPLUG_HOME/init.zsh
+
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+

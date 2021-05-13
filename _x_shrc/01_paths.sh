@@ -13,7 +13,6 @@ export PATH=$HOME/.local/bin:$PATH
 # brew
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
 
-
 # ruby, rails
 export PATH="$HOME/.rbenv/bin:$PATH"
 if command_exists 'rbenv' ; then
@@ -39,16 +38,8 @@ if [ -e $TEXLIVE_BIN ]; then
 fi
 
 # go
-
 export GOPATH="$HOME/.go"
 export PATH=$PATH:$GOPATH/bin
-
-# atcli
-export ATCLI_ROOT=${GOPATH}/src/github.com/gky360/contests/atcoder
-
-# cplex
-# export PATH=$PATH:$HOME/Applications/IBM/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_osx
-# export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux
 
 # node
 if command_exists 'nodenv' ; then

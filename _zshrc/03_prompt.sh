@@ -41,5 +41,3 @@ PROMPT='%{${fg[$zshrc_prompt_color]}%}%n@%m:%{${reset_color}%}%~ %{${vcs_info_ms
 %{%(?.$fg[white].$fg[red])%}%#%{$reset_color%} '
 RPROMPT='%{${fg[$zshrc_prompt_color]}%}%*%{${reset_color}%}'
 
-# ctrlを有効にする
-bindkey -e

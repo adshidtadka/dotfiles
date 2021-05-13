@@ -60,3 +60,5 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
+# ctrlを有効にする
+bindkey -e
