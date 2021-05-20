@@ -4,7 +4,7 @@
 #!/bin/sh
 
 if command_exists sw_vers ; then
-    export ZPLUG_HOME=/opt/homebrew/opt/zplug
+    export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 else
     export ZPLUG_HOME="$HOME"/.zplug
 fi
