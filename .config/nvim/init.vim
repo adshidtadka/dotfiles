@@ -16,7 +16,6 @@ function! Glob(from, pattern)
   return split(globpath(a:from, a:pattern), "[\r\n]")
 endfunction
 
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'adelarsq/vim-matchit'
@@ -27,7 +26,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<C-z>'
+let g:user_emmet_leader_key='<C-e>'
 Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
@@ -35,6 +34,8 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'w0ng/vim-hybrid'
 " Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+" Open NERDTree
+map <C-y> :NERDTreeToggle<CR>
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>

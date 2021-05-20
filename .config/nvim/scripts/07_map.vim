@@ -85,5 +85,3 @@ map <silent> [Tag]h :tabprevious<CR>
 map <silent> [Tag]ml :tabm +1<CR>
 " Move tab to left
 map <silent> [Tag]mh :tabm -1<CR>
-" Open NERDTree
-map <C-e> :NERDTreeToggle<CR>
