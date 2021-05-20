@@ -44,7 +44,7 @@ function peco-fasd() {
     zle reset-prompt
 }
 zle -N peco-fasd
-bindkey '^C' peco-fasd
+bindkey '^W' peco-fasd
 
 # peco
 function peco-history-selection() {
