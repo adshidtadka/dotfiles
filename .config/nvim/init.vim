@@ -18,7 +18,8 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'adelarsq/vim-matchit'
+Plug 'andymass/vim-matchup'
+let g:loaded_matchit = 1
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
