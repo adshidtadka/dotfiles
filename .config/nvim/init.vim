@@ -37,6 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " Open NERDTree
 map <C-y> :NERDTreeToggle<CR>
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>

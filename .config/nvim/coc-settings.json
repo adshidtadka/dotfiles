@@ -10,7 +10,6 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
-    "yaml",
     "json",
     "typescript",
     "javascript",
@@ -19,7 +18,8 @@
     "vue",
     "python",
     "typescriptreact",
-    "javascriptreact"
+    "javascriptreact",
+    "graphql"
   ],
   "clangd.path": "/Users/takaaki/dotfiles/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
