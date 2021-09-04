@@ -11,5 +11,5 @@ fi
 source $ZPLUG_HOME/init.zsh
 
 # brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 
