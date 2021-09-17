@@ -284,3 +284,6 @@ alias nuo='nkf -Luw --overwrite'
 # python
 alias jnb='jupyter notebook'
 
+# kubectl
+alias k='kubectl'
+
