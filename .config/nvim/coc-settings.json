@@ -5,6 +5,12 @@
       "rootPatterns": ["go.mod"],
       "disableWorkspaceFolders": true,
       "filetypes": ["go"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
