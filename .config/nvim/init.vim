@@ -69,6 +69,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'unblevable/quick-scope'
 Plug 'djoshea/vim-autoread'
 Plug 'c9s/hypergit.vim'
+Plug 'hashivim/vim-terraform'
+let g:terraform_fmt_on_save = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
 \   'coc-marketplace',
