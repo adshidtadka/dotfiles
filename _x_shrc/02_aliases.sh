@@ -21,6 +21,7 @@ alias gbv='git branch --verbose'
 alias gbV='git branch --verbose --verbose'
 alias gbx='git branch --delete'
 alias gbX='git branch -D'
+alias gbsu='git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)'
 
 # Commit (c)
 alias gc='git commit --verbose'
