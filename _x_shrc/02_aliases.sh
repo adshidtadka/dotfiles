@@ -288,3 +288,5 @@ alias jnb='jupyter notebook'
 # kubectl
 alias k='kubectl'
 
+# terraform
+alias tf='terraform'
