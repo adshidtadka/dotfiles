@@ -290,3 +290,6 @@ alias k='kubectl'
 
 # terraform
 alias tf='terraform'
+
+# pbcopy
+alias pbc='pbcopy'
