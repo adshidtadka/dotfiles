@@ -28,7 +28,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-e>'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
