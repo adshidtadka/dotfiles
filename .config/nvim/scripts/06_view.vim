@@ -13,7 +13,7 @@ else
 endif
 
 set t_Co=256
-colorscheme lucius
+colorscheme hybrid
 syntax on
 
 " StatusLine {{{1

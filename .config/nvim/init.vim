@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'andymass/vim-matchup'
 let g:loaded_matchit = 1
 Plug 'jonathanfilip/vim-lucius'
+Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-easy-align'
@@ -72,8 +73,8 @@ Plug 'c9s/hypergit.vim'
 Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save = 1
 Plug 'kamykn/spelunker.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
 \   'coc-marketplace',
 \   'coc-lists',
