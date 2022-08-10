@@ -58,10 +58,6 @@ select_theme_color () {
 select_theme_color
 
 echo
-echo "loading .bashrc ..."
-./_bashrc/deploy.sh
-
-echo
 echo "loading .zshrc ..."
 ./_zshrc/deploy.sh
 echo
