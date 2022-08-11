@@ -47,6 +47,9 @@ if command_exists 'nodenv' ; then
   eval "$(nodenv init -)"
 fi
 
+# scala
+export PATH=$PATH:$HOME"/Library/Application Support/Coursier/bin"
+
 # nvm
 # 参考: [NVM の nvm.sh を遅延ロードしてシェルの起動を高速化する - Qiita](http://qiita.com/uasi/items/80865646607b966aedc8)
 if [ -s $HOME/.nvm ]; then

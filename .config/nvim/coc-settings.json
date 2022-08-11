@@ -25,10 +25,13 @@
     "python",
     "typescriptreact",
     "javascriptreact",
-    "graphql"
+    "graphql",
+    "scala",
+    "clojure"
   ],
   "clangd.path": "/Users/takaaki/dotfiles/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
   "eslint.packageManager": "yarn",
-  "eslint.nodePath": ".yarn/sdks"
+  "eslint.nodePath": ".yarn/sdks",
+  "metals.javaHome": "/usr/local/opt/openjdk@11"
 }
