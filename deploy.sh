@@ -23,6 +23,27 @@ for dotfile in .??*; do
   [ ${dotfile##*.} = "swp" ] && continue
 
   echo
+
+  if [ "$dotfile" = ".config" ]; then
+    for cfg in `ls .config`; do
+      if [ -e "$HOME"/".config"/"$cfg" ]; then
+        read -p "overwrite ~/.config/$cfg ? (Yn) > " yn
+        case $yn in
+          [Nn]* )
+            echo "skipping ..."
+            continue
+            ;;
+        esac
+        if [ -d "$DOTPATH"/".config"/"$cfg" ]; then
+          rm -rf "$HOME"/".config"/"$cfg"
+        fi
+        echo "loading .config/$cfg ..."
+	ln -snfv "$DOTPATH"/".config"/"$cfg" "$HOME"/".config"
+      fi
+    done
+    continue
+  fi
+
   if [ -e "$HOME"/"$dotfile" ]; then
     read -p "overwrite ~/$dotfile ? (Yn) > " yn
     case $yn in
@@ -34,11 +55,9 @@ for dotfile in .??*; do
     if [ -d "$DOTPATH"/"$dotfile" ]; then
       rm -rf "$HOME"/"$dotfile"
     fi
+    echo "loading $dotfile ..."
+    ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
   fi
-
-  echo "loading $dotfile ..."
-  ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
-
 done
 
 select_theme_color () {
@@ -56,10 +75,6 @@ select_theme_color () {
 }
 
 select_theme_color
-
-echo
-echo "loading .bashrc ..."
-./_bashrc/deploy.sh
 
 echo
 echo "loading .zshrc ..."

@@ -8,6 +8,3 @@ else
 fi
 source $ZPLUG_HOME/init.zsh
 
-# brew
-eval "$(brew shellenv)"
-
