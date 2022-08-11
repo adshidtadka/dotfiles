@@ -26,9 +26,6 @@ for dotfile in .??*; do
 
   if [ "$dotfile" = ".config" ]; then
     for cfg in `ls .config`; do
-      if [ ! -e "$HOME"/".config" ]; then
-	mkdir "$HOME"/".config"
-      fi
       if [ -e "$HOME"/".config"/"$cfg" ]; then
         read -p "overwrite ~/.config/$cfg ? (Yn) > " yn
         case $yn in
