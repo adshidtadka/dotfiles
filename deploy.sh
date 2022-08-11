@@ -26,6 +26,9 @@ for dotfile in .??*; do
 
   if [ "$dotfile" = ".config" ]; then
     for cfg in `ls .config`; do
+      if [ ! -e "$HOME"/".config" ]; then
+	mkdir "$HOME"/".config"
+      fi
       if [ -e "$HOME"/".config"/"$cfg" ]; then
         read -p "overwrite ~/.config/$cfg ? (Yn) > " yn
         case $yn in
@@ -37,9 +40,9 @@ for dotfile in .??*; do
         if [ -d "$DOTPATH"/".config"/"$cfg" ]; then
           rm -rf "$HOME"/".config"/"$cfg"
         fi
-        echo "loading .config/$cfg ..."
-	ln -snfv "$DOTPATH"/".config"/"$cfg" "$HOME"/".config"
       fi
+      echo "loading .config/$cfg ..."
+      ln -snfv "$DOTPATH"/".config"/"$cfg" "$HOME"/".config"
     done
     continue
   fi
@@ -55,9 +58,9 @@ for dotfile in .??*; do
     if [ -d "$DOTPATH"/"$dotfile" ]; then
       rm -rf "$HOME"/"$dotfile"
     fi
-    echo "loading $dotfile ..."
-    ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
   fi
+  echo "loading $dotfile ..."
+  ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
 done
 
 select_theme_color () {
