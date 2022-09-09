@@ -49,6 +49,10 @@ if command_exists 'nodenv' ; then
   eval "$(nodenv init -)"
 fi
 
+# scala
+export PATH=$PATH:$HOME"/Library/Application Support/Coursier/bin"
+
+
 # OPAM configuration
 if [ -s $HOME/.opam ]; then
   . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

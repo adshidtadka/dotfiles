@@ -37,9 +37,9 @@ for dotfile in .??*; do
         if [ -d "$DOTPATH"/".config"/"$cfg" ]; then
           rm -rf "$HOME"/".config"/"$cfg"
         fi
-        echo "loading .config/$cfg ..."
-	ln -snfv "$DOTPATH"/".config"/"$cfg" "$HOME"/".config"
       fi
+      echo "loading .config/$cfg ..."
+      ln -snfv "$DOTPATH"/".config"/"$cfg" "$HOME"/".config"
     done
     continue
   fi
@@ -55,9 +55,9 @@ for dotfile in .??*; do
     if [ -d "$DOTPATH"/"$dotfile" ]; then
       rm -rf "$HOME"/"$dotfile"
     fi
-    echo "loading $dotfile ..."
-    ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
   fi
+  echo "loading $dotfile ..."
+  ln -snfv "$DOTPATH"/"$dotfile" "$HOME"
 done
 
 select_theme_color () {
