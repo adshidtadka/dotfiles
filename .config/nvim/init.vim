@@ -74,6 +74,7 @@ Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save = 1
 Plug 'kamykn/spelunker.vim'
 Plug 'jparise/vim-graphql'
+Plug 'lambdalisue/gina.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
 \   'coc-marketplace',
