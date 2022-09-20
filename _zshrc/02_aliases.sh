@@ -37,6 +37,7 @@ if command_exists fasd ; then
   alias zz='fasd_cd -d -i' # cd with interactive selection
 fi
 
+# peco-fasd
 function peco-fasd() {
     DESTINATION=`fasd -ld | peco --query "$LBUFFER"`
     BUFFER="cd $DESTINATION"
@@ -46,7 +47,7 @@ function peco-fasd() {
 zle -N peco-fasd
 bindkey '^W' peco-fasd
 
-# peco
+# peco-histry
 function peco-history-selection() {
     if command_exists tac ; then
       BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER"`
@@ -56,9 +57,20 @@ function peco-history-selection() {
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# peco-ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^G' peco-src
 
 # ctrlを有効にする
 bindkey -e
