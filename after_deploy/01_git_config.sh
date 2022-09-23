@@ -22,5 +22,9 @@ if command_exists git ; then
   git config --global color.diff auto
   git config --global color.status auto
   git config --global color.branch auto
+  # push
+  git config --global push.default current
+  # fetch
+  git config --global fetch.prune true
 fi
 
