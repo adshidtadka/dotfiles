@@ -36,7 +36,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'w0ng/vim-hybrid'
 " Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'lambdalisue/fern.vim'
-nnoremap <C-y>t  :Fern . -reveal=% -drawer -toggle -keep<CR>
+nnoremap <C-y>t  :Fern . -reveal=% -drawer -keep<CR>
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 let g:fern#renderer = "nerdfont"
