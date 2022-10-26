@@ -35,10 +35,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'w0ng/vim-hybrid'
 " Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
-nnoremap <C-y>t :<C-u>NERDTreeToggle<CR>
-nnoremap <C-y>f :<C-u>NERDTreeFind<CR>
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'lambdalisue/fern.vim'
+nnoremap <C-y>t  :Fern . -reveal=% -drawer -toggle -keep<CR>
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+let g:fern#renderer = "nerdfont"
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>
@@ -67,7 +69,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 let g:Hexokinase_highlighters = [ 'foreground' ]
 set termguicolors
 Plug 'easymotion/vim-easymotion'
-Plug 'unblevable/quick-scope'
+" Plug 'unblevable/quick-scope'
 Plug 'djoshea/vim-autoread'
 Plug 'c9s/hypergit.vim'
 Plug 'hashivim/vim-terraform'
