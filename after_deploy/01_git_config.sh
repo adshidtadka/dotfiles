@@ -26,5 +26,7 @@ if command_exists git ; then
   git config --global push.default current
   # fetch
   git config --global fetch.prune true
+
+  git config feature.manyFiles true
 fi
 
