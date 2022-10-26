@@ -39,8 +39,9 @@ Plug 'lambdalisue/fern.vim'
 nnoremap <C-y>t  :Fern . -reveal=% -drawer -toggle -keep<CR>
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern-git-status.vim'
 let g:fern#renderer = "nerdfont"
+Plug 'lambdalisue/fern-git-status.vim'
+let g:fern_git_status#disable_ignored = 1
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>
