@@ -37,7 +37,7 @@ if command_exists fasd ; then
   alias zz='fasd_cd -d -i' # cd with interactive selection
 fi
 
-# peco-fasd
+# ディレクトリ移動
 function peco-fasd() {
     DESTINATION=`fasd -ld | peco --query "$LBUFFER"`
     BUFFER="cd $DESTINATION"
@@ -47,30 +47,45 @@ function peco-fasd() {
 zle -N peco-fasd
 bindkey '^W' peco-fasd
 
-# peco-histry
-function peco-history-selection() {
-    if command_exists tac ; then
-      BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER"`
-    else
-      BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --query "$LBUFFER"`
-    fi
+# 履歴のインクリメンタルサーチ
+function peco-history() {
+    local tac
+    type tac &> /dev/null \
+        && tac="tac" \
+        || tac="tail -r"
+    BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER" --prompt "HISTORY>")
     CURSOR=$#BUFFER
-    zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+zle -N peco-history
+bindkey '^R' peco-history
 
-# peco-ghq
-function peco-src () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
+# ghqによるリポジトリ一覧&移動
+function peco-src() {
+    local selected_dir=$(ghq list --full-path | sort | peco --query "$LBUFFER" --prompt "GHQ>")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
 }
 zle -N peco-src
 bindkey '^G' peco-src
+
+# ブランチ選択
+function peco-branch() {
+    local branch=$(git branch | peco --prompt "BRANCH>" | tr -d ' ' | tr -d '*' | awk '{print $0}' ORS=' ')
+    if [ -n "$branch" ]; then
+      if [ -n "$LBUFFER" ]; then
+        local new_left="${LBUFFER%\ } $branch"
+      else
+        local new_left="$branch"
+      fi
+      BUFFER=${new_left}${RBUFFER}
+      CURSOR=${#new_left}
+    fi
+}
+zle -N peco-branch
+bindkey '^B' peco-branch
 
 # ctrlを有効にする
 bindkey -e
