@@ -39,7 +39,7 @@ fi
 
 # ディレクトリ移動
 function peco-fasd() {
-    DESTINATION=`fasd -ld | peco --query "$LBUFFER"`
+    DESTINATION=`fasd -ld | peco --query "$LBUFFER" --prompt "DIRECTORY>"`
     BUFFER="cd $DESTINATION"
     CURSOR=$#BUFFER
     zle reset-prompt
@@ -96,6 +96,10 @@ function peco-aws-profile() {
 }
 zle -N peco-aws-profile
 bindkey '^x^a' peco-aws-profile
+
+funcion awslogin() {
+    aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
+}
 
 # ctrlを有効にする
 bindkey -e
