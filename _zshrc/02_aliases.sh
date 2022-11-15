@@ -45,7 +45,7 @@ function peco-fasd() {
     zle reset-prompt
 }
 zle -N peco-fasd
-bindkey '^W' peco-fasd
+bindkey '^W^W' peco-fasd
 
 # 履歴のインクリメンタルサーチ
 function peco-history() {
@@ -57,7 +57,7 @@ function peco-history() {
     CURSOR=$#BUFFER
 }
 zle -N peco-history
-bindkey '^R' peco-history
+bindkey '^W^H' peco-history
 
 # ghqによるリポジトリ一覧&移動
 function peco-src() {
@@ -69,7 +69,7 @@ function peco-src() {
     zle clear-screen
 }
 zle -N peco-src
-bindkey '^G' peco-src
+bindkey '^W^G' peco-src
 
 # ブランチ選択
 function peco-branch() {
@@ -85,17 +85,17 @@ function peco-branch() {
     fi
 }
 zle -N peco-branch
-bindkey '^B' peco-branch
+bindkey '^W^B' peco-branch
 
 # AWS
-function peco-aws-profile() {
+peco-aws-profile() {
     local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
     [ -z $profile ] && return
     BUFFER="$LBUFFER$profile$RBUFFER"
     CURSOR=$#BUFFER
 }
 zle -N peco-aws-profile
-bindkey '^x^a' peco-aws-profile
+bindkey '^W^A' peco-aws-profile
 
 funcion awslogin() {
     aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
