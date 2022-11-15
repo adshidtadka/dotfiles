@@ -80,8 +80,8 @@ function peco-branch() {
       else
         local new_left="$branch"
       fi
-      BUFFER=${new_left}${RBUFFER}
-      CURSOR=${#new_left}
+      BUFFER="git checkout ${new_left}${RBUFFER}"
+      CURSOR=${#RBUFFER}
     fi
 }
 zle -N peco-branch
