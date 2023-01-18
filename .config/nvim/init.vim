@@ -27,6 +27,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/conflict-marker.vim'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-z>'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
