@@ -55,11 +55,11 @@ nnoremap <C-k>gl :<C-u>Glog<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:60%:wrap'))
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=* RipGrepDistinct
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --color=always -i '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:60%:wrap'))
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=? GFiles
       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
 Plug 'ntpeters/vim-better-whitespace'
