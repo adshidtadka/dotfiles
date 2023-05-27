@@ -85,7 +85,6 @@ let g:coc_global_extensions = [
 \   'coc-marketplace',
 \   'coc-lists',
 \   'coc-python',
-\   'coc-rls',
 \   'coc-json',
 \   'coc-yaml',
 \   'coc-html',
