@@ -58,11 +58,6 @@ if [ -s $HOME/.opam ]; then
   . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
 
-# android-studio
-# export ANDROID_SDK=$HOME/Library/Android/sdk
-#export PATH=$PATH:$ANDROID_SDK/emulator
-# export PATH=$PATH:$ANDROID_SDK/platform-tools
-
 # mysql
 # export PATH=/usr/local/mysql/bin:$PATH
 
@@ -72,3 +67,13 @@ export EDITOR=nvim
 # rust
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
+
+# flutter
+# https://docs.flutter.dev/get-started/install/macos
+export PATH="$PATH:$HOME/.flutter/bin"
+export FLUTTER_GIT_URL=ssh://git@github.com/flutter/flutter.git
+
+# Android Studio
+# https://developer.android.com/studio/command-line/variables?hl=ja#set
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
