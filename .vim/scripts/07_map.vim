@@ -41,8 +41,6 @@ vnoremap gk k
 " Paste sequentially
 vnoremap <silent> <C-p> "0p<CR>
 
-inoremap <C-h> <Backspace>
-inoremap <C-d> <Delete>
 cnoremap <C-k> <UP>
 cnoremap <C-j> <DOWN>
 cnoremap <C-l> <RIGHT>
@@ -61,6 +59,8 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
 
+inoremap <C-h> <Backspace>
+inoremap <C-d> <Delete>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-h> <BS>
