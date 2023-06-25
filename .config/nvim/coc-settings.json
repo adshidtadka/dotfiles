@@ -34,5 +34,6 @@
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
-  "metals.javaHome": "/usr/local/opt/openjdk@11"
+  "metals.javaHome": "/usr/local/opt/openjdk@11",
+  "inlayHint.enable": false
 }
