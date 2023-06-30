@@ -31,6 +31,7 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-z>'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tsandall/vim-rego'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
