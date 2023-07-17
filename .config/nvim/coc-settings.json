@@ -35,5 +35,6 @@
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "metals.javaHome": "/usr/local/opt/openjdk@11",
-  "inlayHint.enable": false
+  "inlayHint.enable": false,
+  "java.import.gradle.java.home": "/usr/local/Cellar/openjdk@11/11.0.14.1/libexec/openjdk.jdk/Contents/Home"
 }

@@ -149,9 +149,6 @@ set winaltkeys=no
 set novisualbell
 set vb t_vb=
 
-" Automatically equal size when opening
-set noequalalways
-
 " History size
 set history=10000
 set wrap
