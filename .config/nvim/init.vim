@@ -33,6 +33,7 @@ let g:user_emmet_leader_key='<C-z>'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tsandall/vim-rego'
 Plug 'udalov/kotlin-vim'
+Plug 'rhysd/vim-wasm'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
