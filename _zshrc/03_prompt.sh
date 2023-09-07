@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # complement
+fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
 # 色を使用出来るようにする
