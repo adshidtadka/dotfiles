@@ -84,11 +84,11 @@ Plug 'lambdalisue/gina.vim'
 Plug 'github/copilot.vim'
 Plug 'dart-lang/dart-vim-plugin'
 let g:dart_format_on_save = 1
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
 \   'coc-marketplace',
 \   'coc-lists',
-\   'coc-python',
 \   'coc-json',
 \   'coc-yaml',
 \   'coc-html',
@@ -99,6 +99,7 @@ let g:coc_global_extensions = [
 \   'coc-pairs',
 \   'coc-java',
 \   'coc-snippets',
+\   'coc-pyright'
 \ ]
 
 call plug#end()
