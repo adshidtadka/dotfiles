@@ -88,7 +88,7 @@ zle -N peco-branch
 bindkey '^W^B' peco-branch
 
 # AWS
-peco-aws-profile() {
+function peco-aws-profile() {
     local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
     [ -z $profile ] && return
     BUFFER="$LBUFFER$profile$RBUFFER"
@@ -97,9 +97,10 @@ peco-aws-profile() {
 zle -N peco-aws-profile
 bindkey '^W^A' peco-aws-profile
 
-funcion awslogin() {
+function awslogin() {
     aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
 }
 
 # ctrlを有効にする
 bindkey -e
+
