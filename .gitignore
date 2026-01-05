@@ -14,3 +14,5 @@ Session.vim
 tags
 *.retry
 
+# Karabiner automatic backups
+.config/karabiner/automatic_backups/
