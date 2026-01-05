@@ -6,7 +6,7 @@ zplug "zsh-users/zsh-autosuggestions", defer:2
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4c4c4c"
 
 # インストールする
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -14,4 +14,4 @@ if ! zplug check --verbose; then
 fi
 
 # プラグインを読み込み、コマンドにパスを通す
-zplug load --verbose
+zplug load
