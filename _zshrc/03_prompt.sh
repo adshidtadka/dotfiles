@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# complement
-autoload -Uz compinit && compinit
-
 # 色を使用出来るようにする
 autoload -Uz colors && colors
 

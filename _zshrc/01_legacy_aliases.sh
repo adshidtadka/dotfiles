@@ -267,7 +267,7 @@ alias vast='vagrant status'
 # docker
 alias dcm='docker-compose'
 
-# local IP address 確認
+# local IP address
 alias localips="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*'"
 
 # redis
