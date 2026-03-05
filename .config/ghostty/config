@@ -1,0 +1,6 @@
+macos-option-as-alt = true
+
+font-family = JetBrains Mono
+font-family = Hiragino Sans
+
+font-feature = -dlig
