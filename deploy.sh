@@ -9,12 +9,6 @@ cd $DOTPATH
 
 
 echo
-for before_deploy_sh in $DOTPATH/before_deploy/*.sh; do
-  echo "loading $before_deploy_sh ..."
-  . $before_deploy_sh
-done
-
-echo
 for dotfile in .??*; do
   [ "$dotfile" = ".git" ] && continue
   [ "$dotfile" = ".gitignore" ] && continue
@@ -67,12 +61,27 @@ echo "loading .zshrc ..."
 ./_zshrc/deploy.sh
 echo
 
-echo
-for after_deploy_sh in $DOTPATH/after_deploy/*.sh; do
-  echo "loading $after_deploy_sh ..."
-  . $after_deploy_sh
-done
+echo "configuring git ..."
+if command -v git >/dev/null 2>&1 ; then
+  if [ "`git remote -v | grep https`" ]; then
+    new_origin='https://github.com/adshidtadka/dotfiles.git'
+  else
+    new_origin='git@github.com:adshidtadka/dotfiles.git'
+  fi
+  set -x
+  git remote set-url origin $new_origin
+  { set +x; } 2>/dev/null
 
+  git config --global core.editor 'nvim'
+  git config --global core.excludesfile ~/.gitignore_global
+  git config --global color.ui true
+  git config --global color.diff auto
+  git config --global color.status auto
+  git config --global color.branch auto
+  git config --global push.default current
+  git config --global fetch.prune true
+  git config feature.manyFiles true
+fi
 
 echo
 echo "finished."
