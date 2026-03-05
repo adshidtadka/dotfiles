@@ -102,6 +102,13 @@ endfunction
 " else
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 
+" vim-airline git integration
+let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 0
+let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+
 let g:lightline = {
       \  'active': {
       \    'left': [
