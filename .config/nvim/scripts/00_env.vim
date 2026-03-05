@@ -33,8 +33,6 @@ function! s:vimrc_environment()
     
     " tmux - 遅延評価に変更（使用時のみ取得）
     let env.is_tmux_running = !empty($TMUX)
-    " この行をコメントアウト
-    " let env.tmux_proc = system('tmux display-message -p "#W"')
     
     let env.vimrc = {
                 \ 'plugin_on': g:false,
@@ -51,14 +49,6 @@ function! s:vimrc_environment()
                 \ 'check_plug_update': g:false,
                 \ }
     return env
-endfunction
-
-" tmux_procが必要な場合のみ取得する関数を追加
-function! GetTmuxProc()
-    if !exists('g:env.tmux_proc')
-        let g:env.tmux_proc = system('tmux display-message -p "#W"')
-    endif
-    return g:env.tmux_proc
 endfunction
 
 let g:env = s:vimrc_environment()

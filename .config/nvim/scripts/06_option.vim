@@ -8,9 +8,6 @@ set pumheight=10
 " Don't redraw while executing macros
 set lazyredraw
 
-" Fast terminal connection
-set ttyfast
-
 " Enable the mode line
 set modeline
 
@@ -227,9 +224,8 @@ set swapfile
 set directory=.,~/tmp,/var/tmp,/tmp
 
 " backup configurations
-" Create backups only when failed to overwrite
 set nobackup
-set writebackup
+set nowritebackup
 " Designate dir to create backups
 set backupdir=.,~/tmp,~/
 
