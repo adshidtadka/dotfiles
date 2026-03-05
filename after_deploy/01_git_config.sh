@@ -1,5 +1,9 @@
 #!/bin/sh
 
+function command_exists () {
+  command -v "$1" >/dev/null 2>&1 ;
+}
+
 # git config
 if command_exists git ; then
   if [ "`git remote -v | grep https`" ]; then

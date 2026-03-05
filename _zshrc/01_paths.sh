@@ -1,5 +1,9 @@
 #!/bin/sh
 
+function command_exists () {
+  command -v "$1" >/dev/null 2>&1 ;
+}
+
 # compinit の高速化（1日1回だけフル実行、2回目以降はスキップ）
 autoload -Uz compinit
 _comp_path="${ZDOTDIR:-$HOME}/.zcompdump"
