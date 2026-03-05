@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 ### https://raw.github.com/github/gitignore/67f633a0df0feeb1ae6f9a521d43ff7070191098/Global/Vim.gitignore
 
 # swap
@@ -16,3 +19,7 @@ tags
 
 # Karabiner automatic backups
 .config/karabiner/automatic_backups/
+
+# Neovim - auto-generated files
+.config/nvim/spell/*.add.spl
+.config/nvim/undo/
