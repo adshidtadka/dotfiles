@@ -31,6 +31,7 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-z>'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neovim/nvim-lspconfig'
 Plug 'tsandall/vim-rego'
 Plug 'rhysd/vim-wasm'
 Plug 'jiangmiao/auto-pairs'
