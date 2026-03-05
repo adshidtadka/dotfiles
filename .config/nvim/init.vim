@@ -16,7 +16,7 @@ function! Glob(from, pattern)
   return split(globpath(a:from, a:pattern), "[\r\n]")
 endfunction
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'andymass/vim-matchup'
 let g:loaded_matchit = 1
