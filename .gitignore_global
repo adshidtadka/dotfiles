@@ -1,7 +1,7 @@
-*~
 .DS_Store
 .python-version
 .lvimrc
+*~
 
 
 
@@ -16,8 +16,8 @@
 Session.vim
 # temporary
 .netrwhist
-*~
 # auto-generated tag files
 tags
 
 
+.takaaki/*

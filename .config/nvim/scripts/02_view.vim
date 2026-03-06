@@ -22,85 +22,14 @@ set laststatus=2
 highlight BlackWhite ctermfg=black ctermbg=white cterm=none guifg=black guibg=white gui=none
 highlight WhiteBlack ctermfg=white ctermbg=black cterm=none guifg=white guibg=black gui=none
 
-function! MakeStatusLine()
-  let line = ''
-  let line .= '[%n] '
-  let line .= '%f'
-  let line .= ' %m'
-  let line .= '%<'
-
-  let line .= '%='
-  let line .= '%#BlackWhite#'
-  let line .= '%y'
-  let line .= "[%{(&fenc!=#''?&fenc:&enc).(&bomb?'(BOM)':'')}:"
-  let line .= "%{&ff.(&bin?'(BIN'.(&eol?'':'-noeol').')':'')}]"
-  let line .= '%r'
-  let line .= '%h'
-  let line .= '%w'
-  let line .= ' %l/%LL %2vC'
-  let line .= ' %3p%%'
-
-  if g:env.vimrc.statusline_manually == g:true
-    return line
-  else
-    return ''
-  endif
-endfunction
-
-function! MakeBigStatusLine()
-  if g:env.vimrc.statusline_manually == g:true
-    set statusline=
-    set statusline+=%#BlackWhite#
-    set statusline+=[%n]:
-    if filereadable(expand('%'))
-      set statusline+=%{GetBufname(bufnr('%'),'s')}
-    else
-      set statusline+=%F
-    endif
-    set statusline+=\ %m
-    set statusline+=%#StatusLine#
-
-    set statusline+=%=
-    set statusline+=%#BlackWhite#
-    if exists('*TrailingSpaceWarning')
-      "set statusline+=%{TrailingSpaceWarning()}
-    endif
-    set statusline+=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}
-    set statusline+=%r
-    set statusline+=%h
-    set statusline+=%w
-    if exists('*GetFileSize')
-      set statusline+=[%{GetFileSize()}]
-    endif
-    if exists('*GetCharacterCode')
-      set statusline+=[%{GetCharacterCode()}]
-    endif
-    set statusline+=\ %4l/%4LL,%3cC\ %3p%%
-    if exists('*WordCount')
-      set statusline+=\ [WC=%{WordCount()}]
-    endif
-    if exists('*GetDate')
-      set statusline+=\ (%{GetDate()})
-    endif
-  endif
-endfunction
-
-" if !g:plug.is_installed('lightline.vim')
-"     call MakeBigStatusLine()
-"     if g:env.vimrc.statusline_manually == g:true
-"         " Refresh Manually StatusLine
-"         augroup automatically-statusline
-"             autocmd!
-"             autocmd BufEnter * call MakeBigStatusLine()
-"         augroup END
-"     endif
-"
-"     augroup minimal-statusline
-"         autocmd!
-"         autocmd WinEnter,CursorMoved * if winwidth(0) <  &columns | set statusline=%!MakeStatusLine() | endif
-"     augroup END
-" else
 let g:ale_statusline_format = ['E%d', 'W%d', '']
+
+" vim-airline git integration
+let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 0
+let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
 
 let g:lightline = {
       \  'active': {
@@ -163,43 +92,6 @@ function! MakeTabLine() "{{{3
   return tabs . '%=' . info
 endfunction
 
-function! GuiTabLabel() "{{{3
-  let label = ''
-  let bufnrlist = tabpagebuflist(v:lnum)
-
-  " Append the tab number
-  "let label .= v:lnum.': '
-  " Append the buffer name
-  let name = bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
-  if name == ''
-    " give a name to no-name documents
-    if &buftype=='quickfix'
-      let name = '[Quickfix List]'
-    else
-      let name = '[No Name]'
-    endif
-  else
-    " get only the file name
-    let name = fnamemodify(name,":t")
-  endif
-  "let label .= name
-  let label .= GetBufname('%', 't')
-  " Append the number of windows in the tab page
-  let wincount = tabpagewinnr(v:lnum, '$')
-
-  " Add '+' if one of the buffers in the tab page is modified
-  for bufnr in l:bufnrlist
-    if getbufvar(bufnr, "&modified")
-      let l:label .= ' +'
-      break
-    endif
-  endfor
-  let wincount = wincount == 1 ? '' : wincount . ' '
-
-  ""return label . '  [' . wincount . ']'
-  return wincount . label
-endfunction "}}}
-
 " Emphasize statusline in the insert mode {{{1
 " if !g:plug.is_installed('lightline.vim')
 augroup colorize-statusline-insert
@@ -235,8 +127,6 @@ function! s:colorize_statusline_insert(mode)
     silent execute s:slhlcmd
   endif
 endfunction
-
-" endif
 
 " Cursor line/column {{{1
 set cursorline
