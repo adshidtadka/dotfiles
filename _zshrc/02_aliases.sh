@@ -320,28 +320,29 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias lt='ls -lah --tree'
 
-# fasd
-if command_exists fasd ; then
-  eval "$(fasd --init auto)"
-  alias a='fasd -a'        # any
-  alias s='fasd -si'       # show / search / select
-  alias d='fasd -d'        # directory
-  alias f='fasd -f'        # file
-  alias sd='fasd -sid'     # interactive directory selection
-  alias sf='fasd -sif'     # interactive file selection
-  alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-  alias zz='fasd_cd -d -i' # cd with interactive selection
+# zoxide
+if command_exists zoxide ; then
+  eval "$(zoxide init zsh)"
 fi
 
 # ディレクトリ移動
-function peco-fasd() {
-    DESTINATION=`fasd -ld | peco --query "$LBUFFER" --prompt "DIRECTORY>"`
-    BUFFER="cd $DESTINATION"
-    CURSOR=$#BUFFER
-    zle reset-prompt
+function peco-zoxide() {
+    local destination
+    if ! command_exists zoxide || ! command_exists peco ; then
+        zle -M "zoxide or peco is not installed."
+        return
+    fi
+    destination=$(zoxide query -l | peco --query "$LBUFFER" --prompt "DIRECTORY>")
+    if [ -n "$destination" ]; then
+        BUFFER="cd ${(q)destination}"
+        CURSOR=$#BUFFER
+        zle reset-prompt
+    else
+        zle -M "No match. Add history by moving around with cd/z first."
+    fi
 }
-zle -N peco-fasd
-bindkey '^W^W' peco-fasd
+zle -N peco-zoxide
+bindkey '^W^W' peco-zoxide
 
 # 履歴のインクリメンタルサーチ
 function peco-history() {
@@ -399,4 +400,3 @@ function awslogin() {
 
 # ctrlを有効にする
 bindkey -e
-
