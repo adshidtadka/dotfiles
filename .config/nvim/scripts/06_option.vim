@@ -214,8 +214,8 @@ endif
 
 
 
-" 80-column indication
-set colorcolumn=80
+" Disable the right-margin guide
+set colorcolumn=
 
 " swapfile configrations
 " Create swapfile
