@@ -72,12 +72,10 @@ fi
 export GOPATH="$HOME/.go"
 export PATH=$PATH:$GOPATH/bin
 
-# node
-export NODENV_ROOT="$HOME/.nodenv"
-export PATH="$NODENV_ROOT/bin:$PATH"
-if command_exists 'nodenv' ; then
-  eval "$(nodenv init -)"
-fi
+# node (nvm)
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # scala
 export PATH=$PATH:$HOME"/Library/Application Support/Coursier/bin"
