@@ -81,11 +81,27 @@ Plug 'kamykn/spelunker.vim'
 Plug 'jparise/vim-graphql'
 Plug 'lambdalisue/gina.vim'
 Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'olimorris/codecompanion.nvim'
 Plug 'dart-lang/dart-vim-plugin'
 let g:dart_format_on_save = 1
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
+
+lua << EOF
+require("codecompanion").setup({
+  interactions = {
+    chat = { adapter = "copilot" },
+    inline = { adapter = "copilot" },
+  },
+})
+vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<Leader>cc", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+vim.cmd([[cab cc CodeCompanion]])
+EOF
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
