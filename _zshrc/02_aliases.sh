@@ -325,14 +325,75 @@ if command_exists zoxide ; then
   eval "$(zoxide init zsh)"
 fi
 
-# ディレクトリ移動
+# cd 時刻の記録
+_CHPWD_LOG="$HOME/.local/share/zsh/chpwd.log"
+[[ -d "${_CHPWD_LOG:h}" ]] || mkdir -p "${_CHPWD_LOG:h}"
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _log_chpwd
+function _log_chpwd() { print -r "$(date '+%Y-%m-%d %H:%M:%S')	$PWD" >> "$_CHPWD_LOG" }
+
+# ディレクトリ移動（zoxide + chpwd ログ + Cursor Agent のターミナル履歴）
+function _collect_dir_timestamps() {
+    [[ -f "$_CHPWD_LOG" ]] && tail -r "$_CHPWD_LOG"
+
+    local base="$HOME/.cursor/projects"
+    [[ -d "$base" ]] || return
+    for f in "$base"/*/terminals/*.txt(N); do
+        local cwd="" ts=""
+        while IFS= read -r line; do
+            case "$line" in
+                cwd:*) cwd="${${line#cwd: }//\"/}" ;;
+                started_at:*) ts="${line#started_at: }" ;;
+            esac
+            [[ "$line" == "---" && -n "$cwd" ]] && break
+        done < "$f"
+        [[ -n "$cwd" && -d "$cwd" ]] || continue
+        if [[ -n "$ts" ]]; then
+            echo "${ts%%.*}	${cwd}"
+        else
+            echo "	${cwd}"
+        fi
+    done
+}
+
 function peco-zoxide() {
     local destination
     if ! command_exists zoxide || ! command_exists peco ; then
         zle -M "zoxide or peco is not installed."
         return
     fi
-    destination=$(zoxide query -l | peco --query "$LBUFFER" --prompt "DIRECTORY>")
+
+    local cols=${COLUMNS:-$(tput cols)}
+    destination=$(
+        _collect_dir_timestamps \
+          | awk -F'\t' '$2 != "" && !seen[$2]++ {
+                ts = $1
+                if (match(ts, /T/)) {
+                    split(substr(ts,1,10), d, "-"); split(substr(ts,12), t, ":")
+                    h = t[1] + 9; day = d[3] + 0
+                    if (h >= 24) { h -= 24; day++ }
+                    ts = sprintf("%s-%s-%02d %02d:%s:%s", d[1], d[2], day, h, t[2], t[3])
+                }
+                if (ts != "") times[$2] = "[" ts "]"
+            }
+            END { for (k in times) print k "\t" times[k] }' \
+          | { declare -A ts_map
+              while IFS=$'\t' read -r dir stamp; do
+                  [[ -n "$stamp" ]] && ts_map[$dir]="$stamp"
+              done
+              zoxide query -l 2>/dev/null | while IFS= read -r dir; do
+                  [[ -n "${ts_map[$dir]}" ]] && printf '%s\t%s\n' "$dir" "${ts_map[$dir]}" && unset "ts_map[$dir]" || echo "$dir"
+              done
+              for dir in "${(@k)ts_map}"; do printf '%s\t%s\n' "$dir" "${ts_map[$dir]}"; done
+          } \
+          | awk -F'\t' -v cols="$cols" 'NF==2 {
+                pad=cols-length($1)-length($2)-1; if(pad<2) pad=2
+                printf "%s%"pad"s%s\n",$1," ",$2; next
+            } { print }' \
+          | peco --query "$LBUFFER" --prompt "DIRECTORY>"
+    )
+
+    destination=$(echo "$destination" | sed 's/  *\[.*\]$//')
     if [ -n "$destination" ]; then
         BUFFER="cd ${(q)destination}"
         CURSOR=$#BUFFER
