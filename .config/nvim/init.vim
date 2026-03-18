@@ -45,15 +45,10 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 let g:fern#renderer = "nerdfont"
 Plug 'lambdalisue/fern-git-status.vim'
 let g:fern_git_status#disable_ignored = 1
-" A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive' | Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 nnoremap <C-k>f :<C-u>GFiles<CR>
 nnoremap <C-k>rg :<C-u>RipGrep<CR>
 nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
-nnoremap <C-k>gs :<C-u>Gstatus<CR>
-nnoremap <C-k>gd :<C-u>Gdiff<CR>
-nnoremap <C-k>gb :<C-u>Gblame<CR>
-nnoremap <C-k>gl :<C-u>Glog<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --color=always '.shellescape(<q-args>), 0,
@@ -64,6 +59,14 @@ command! -bang -nargs=* RipGrepDistinct
       \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=? GFiles
       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
+Plug 'vim-denops/denops.vim'
+Plug 'lambdalisue/vim-gin'
+nnoremap <C-k>gs :<C-u>GinStatus<CR>
+nnoremap <C-k>gd :<C-u>GinDiff<CR>
+nnoremap <C-k>gl :<C-u>GinLog<CR>
+nnoremap <C-k>gb :<C-u>GinBranch<CR>
+nnoremap <C-g> :<C-u>GinBrowse<CR>
+vnoremap <C-g> :GinBrowse<CR>
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/AnsiEsc.vim'
 Plug 'luochen1990/rainbow'
@@ -74,12 +77,10 @@ let g:Hexokinase_highlighters = [ 'foreground' ]
 set termguicolors
 Plug 'easymotion/vim-easymotion'
 Plug 'djoshea/vim-autoread'
-Plug 'c9s/hypergit.vim'
 Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save = 1
 Plug 'kamykn/spelunker.vim'
 Plug 'jparise/vim-graphql'
-Plug 'lambdalisue/gina.vim'
 Plug 'github/copilot.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
