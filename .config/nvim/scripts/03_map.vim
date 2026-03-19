@@ -17,6 +17,9 @@ xmap  <Space>   [Space]
 nnoremap  [Space]   <Nop>
 xnoremap  [Space]   <Nop>
 
+nnoremap [Space]cp :let @+ = expand('%')<CR>
+nnoremap [Space]cP :let @+ = expand('%:p')<CR>
+
 noremap <C-h> ^
 noremap <C-l> $
 
