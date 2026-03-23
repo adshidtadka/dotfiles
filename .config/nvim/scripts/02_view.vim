@@ -19,38 +19,80 @@ syntax on
 " StatusLine {{{1
 set laststatus=2
 
-highlight BlackWhite ctermfg=black ctermbg=white cterm=none guifg=black guibg=white gui=none
-highlight WhiteBlack ctermfg=white ctermbg=black cterm=none guifg=white guibg=black gui=none
+lua << LUALINE
+local pr_cache = { value = "", last_check = 0, last_dir = "" }
 
-let g:ale_statusline_format = ['E%d', 'W%d', '']
+local function get_pr_number()
+  local buf_dir = vim.fn.expand("%:p:h")
+  if buf_dir == "" then buf_dir = vim.fn.getcwd() end
+  local now = os.time()
+  if now - pr_cache.last_check < 30 and pr_cache.last_dir == buf_dir then
+    return pr_cache.value
+  end
+  pr_cache.last_check = now
+  pr_cache.last_dir = buf_dir
+  vim.fn.jobstart({ "gh", "pr", "view", "--json", "number", "-q", ".number" }, {
+    cwd = buf_dir,
+    stdout_buffered = true,
+    on_stdout = function(_, data)
+      local num = (data and data[1] or ""):match("^%d+$")
+      pr_cache.value = num and ("\u{f407} #" .. num) or ""
+    end,
+    on_exit = function(_, code)
+      if code ~= 0 then pr_cache.value = "" end
+    end,
+  })
+  return pr_cache.value
+end
 
-" vim-airline git integration
-let g:airline#extensions#fugitiveline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 0
-let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+local function selection_charcount()
+  local mode = vim.fn.mode()
+  if mode ~= "v" and mode ~= "V" and mode ~= "\22" then
+    return ""
+  end
+  local vpos = vim.fn.getpos("v")
+  local cpos = vim.fn.getpos(".")
+  local l1, c1 = vpos[2], vpos[3]
+  local l2, c2 = cpos[2], cpos[3]
+  if l1 > l2 or (l1 == l2 and c1 > c2) then
+    l1, c1, l2, c2 = l2, c2, l1, c1
+  end
+  local chars = 0
+  for lnum = l1, l2 do
+    local line = vim.fn.getline(lnum)
+    if mode == "V" then
+      chars = chars + vim.fn.strchars(line)
+    elseif mode == "\22" then
+      chars = chars + vim.fn.strchars(string.sub(line, c1, c2))
+    elseif l1 == l2 then
+      chars = chars + vim.fn.strchars(string.sub(line, c1, c2))
+    elseif lnum == l1 then
+      chars = chars + vim.fn.strchars(string.sub(line, c1))
+    elseif lnum == l2 then
+      chars = chars + vim.fn.strchars(string.sub(line, 1, c2))
+    else
+      chars = chars + vim.fn.strchars(line)
+    end
+  end
+  return chars .. " chars"
+end
 
-let g:lightline = {
-      \  'active': {
-      \    'left': [
-      \      ['mode', 'paste'],
-      \      ['readonly', 'filename', 'modified'],
-      \      ['ale'],
-      \    ]
-      \  },
-      \  'component_function': {
-      \    'ale': 'ALEStatus'
-      \  },
-      \  'colorscheme': 'wombat',
-      \  'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \  'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-      \}
-
-function! ALEStatus()
-  return exists('*ALEGetStatusLine') ? ALEGetStatusLine() : ''
-endfunction
-" endif
+require("lualine").setup({
+  options = {
+    theme = "auto",
+    section_separators = "",
+    component_separators = "|",
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { { "branch", separator = "" }, { get_pr_number, separator = "" }, "diff", "diagnostics" },
+    lualine_c = { { "filename", path = 1 } },
+    lualine_x = { selection_charcount, "filetype" },
+    lualine_y = { "location" },
+    lualine_z = { "progress" },
+  },
+})
+LUALINE
 
 " Tabpages {{{1
 set showtabline=2
@@ -92,41 +134,6 @@ function! MakeTabLine() "{{{3
   return tabs . '%=' . info
 endfunction
 
-" Emphasize statusline in the insert mode {{{1
-" if !g:plug.is_installed('lightline.vim')
-augroup colorize-statusline-insert
-  autocmd!
-  autocmd InsertEnter * call s:colorize_statusline_insert('Enter')
-  autocmd InsertLeave * call s:colorize_statusline_insert('Leave')
-augroup END
-
-function! ReverseHighlight(hi)
-  let hl = a:hi
-  let hl = substitute(hl, 'fg', 'swp', 'g')
-  let hl = substitute(hl, 'bg', 'fg',  'g')
-  let hl = substitute(hl, 'swp', 'bg', 'g')
-  return hl
-endfunction
-function! GetHighlight(hi)
-  redir => hl
-  silent execute 'highlight ' . a:hi
-  redir END
-  return substitute(hl, '.*xxx ', '', '')
-endfunction
-
-let s:hi_insert = 'highlight StatusLine ' . ReverseHighlight(GetHighlight('ModeMsg'))
-let s:slhlcmd = ''
-
-function! s:colorize_statusline_insert(mode)
-  if a:mode == 'Enter'
-    let s:slhlcmd = 'highlight StatusLine ' . GetHighlight('StatusLine')
-    silent execute s:hi_insert
-
-  elseif a:mode == 'Leave'
-    highlight clear StatusLine
-    silent execute s:slhlcmd
-  endif
-endfunction
 
 " Cursor line/column {{{1
 set cursorline

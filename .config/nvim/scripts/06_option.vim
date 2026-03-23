@@ -99,11 +99,11 @@ set laststatus=2
 " Set command window height to reduce number of 'Press ENTER...' prompts
 set cmdheight=2
 
-" Show current mode (insert, visual, normal, etc.)
-set showmode
+" lualine shows the mode, so disable the built-in display
+set noshowmode
 
-" Show last command in status line
-set showcmd
+" Disable showcmd to avoid visual selection line count in the bottom right
+set noshowcmd
 
 " Lets vim set the title of the console
 set notitle
