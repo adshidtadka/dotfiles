@@ -1,6 +1,4 @@
-font-family = "Hack Nerd Font Mono"
-font-family = "Hiragino Sans"
-font-feature = -dlig
+font-family = "HackGen Console NF"
 
 notify-on-command-finish = unfocused
 notify-on-command-finish-action = notify
