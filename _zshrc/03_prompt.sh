@@ -38,7 +38,7 @@ add-zsh-hook precmd vcs_info
 setopt prompt_subst
 
 # # プロンプトのフォーマット
-PROMPT='%{${fg[$zshrc_prompt_color]}%}%n@%m:%{${reset_color}%}%~ %{${vcs_info_msg_0_}%}
+PROMPT='%{${fg[$zshrc_prompt_color]}%}%n@$(ipconfig getifaddr en0 2>/dev/null || echo "localhost"):%{${reset_color}%}%~ %{${vcs_info_msg_0_}%} %{${fg[$zshrc_prompt_color]}%}%*%{${reset_color}%}
 %{%(?.$fg[white].$fg[red])%}%#%{$reset_color%} '
-RPROMPT='%{${fg[$zshrc_prompt_color]}%}%*%{${reset_color}%}'
+RPROMPT=''
 
