@@ -32,6 +32,7 @@ Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-z>'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'saghen/blink.cmp', { 'do': 'cargo build --release' }
 Plug 'tsandall/vim-rego'
 Plug 'udalov/kotlin-vim'
 Plug 'rhysd/vim-wasm'

@@ -7,8 +7,24 @@ if type(vim.lsp) ~= "table" or type(vim.lsp.start) ~= "function" then
   return
 end
 
+require("blink.cmp").setup({
+  keymap = { preset = "default" },
+  completion = {
+    trigger = {
+      show_on_trigger_character = true,
+    },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 200,
+    },
+  },
+  sources = {
+    default = { "lsp", "path", "buffer" },
+  },
+})
+
 local group = vim.api.nvim_create_augroup("my_lsp_setup", { clear = true })
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 local function set_lsp_maps(bufnr)
   local opts = { buffer = bufnr, silent = true }
