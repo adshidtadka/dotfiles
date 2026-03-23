@@ -1,4 +1,5 @@
 font-family = "HackGen Console NF"
+theme = Kanagawa Wave
 
 notify-on-command-finish = unfocused
 notify-on-command-finish-action = notify
