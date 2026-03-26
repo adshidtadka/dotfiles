@@ -9,6 +9,9 @@ end
 
 require("blink.cmp").setup({
   keymap = { preset = "default" },
+  fuzzy = {
+    implementation = "prefer_rust",
+  },
   completion = {
     trigger = {
       show_on_trigger_character = true,
