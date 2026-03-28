@@ -7,6 +7,33 @@ export DOTPATH
 
 cd $DOTPATH
 
+ensure_config_root () {
+  local config_root="$HOME/.config"
+  if [ -d "$config_root" ] && [ ! -L "$config_root" ]; then
+    return
+  fi
+  if [ -e "$config_root" ] || [ -L "$config_root" ]; then
+    local backup_path="${config_root}.backup.$(date +%Y%m%d%H%M%S)"
+    echo "backing up broken ~/.config to $backup_path ..."
+    mv "$config_root" "$backup_path"
+  fi
+  mkdir -p "$config_root"
+}
+
+install_vim_plug () {
+  local plug_path="$HOME/.local/share/nvim/site/autoload/plug.vim"
+  local init_vim="$HOME/.config/nvim/init.vim"
+  if [ ! -f "$init_vim" ] || [ -f "$plug_path" ]; then
+    return
+  fi
+  if command -v curl >/dev/null 2>&1 ; then
+    echo "installing vim-plug ..."
+    curl -fLo "$plug_path" --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+}
+
+ensure_config_root
 
 echo
 for dotfile in .??*; do
@@ -83,6 +110,7 @@ if command -v git >/dev/null 2>&1 ; then
   git config feature.manyFiles true
 fi
 
+install_vim_plug
+
 echo
 echo "finished."
-
