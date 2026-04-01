@@ -61,6 +61,13 @@ echo "loading .zshrc ..."
 ./_zshrc/deploy.sh
 echo
 
+echo "loading AGENTS.md ..."
+ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.claude/CLAUDE.md
+ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/instructions.md
+mkdir -p "$HOME"/.cursor/rules
+ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.cursor/rules/global.mdc
+echo
+
 echo "configuring git ..."
 if command -v git >/dev/null 2>&1 ; then
   if [ "`git remote -v | grep https`" ]; then
