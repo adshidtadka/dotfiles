@@ -14,3 +14,4 @@
   - PRはdraftで作成する
   - assigneeは `adshidtadka` にする
   - PRのtitleとdescriptionはプロジェクトの `.github/pull_request_template.md` に従って記載する（テンプレートがない場合はWhy/What/Testing Strategyの構成で書く）
+- 「CI通ったらマージして」と依頼された場合は `gh pr merge <PR番号> --squash --auto` を使う
