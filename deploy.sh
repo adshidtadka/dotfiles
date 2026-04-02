@@ -62,6 +62,8 @@ echo "loading .zshrc ..."
 echo
 
 echo "loading AGENTS.md ..."
+mkdir -p "$HOME"/.claude
+mkdir -p "$HOME"/.codex
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.claude/CLAUDE.md
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/instructions.md
 mkdir -p "$HOME"/.cursor/rules
@@ -92,4 +94,3 @@ fi
 
 echo
 echo "finished."
-
