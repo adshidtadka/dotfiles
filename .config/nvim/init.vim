@@ -59,8 +59,8 @@ command! -bang -nargs=* RipGrepDistinct
       \   'rg --column --line-number --no-heading --hidden --glob "!.git" --glob ".adshidtadka/**" --color=always -i '.shellescape(<q-args>), 0,
       \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=? GFiles
-      \ call fzf#vim#files(<q-args>, extend(fzf#vim#with_preview('right:60%:wrap'),
-      \   {'source': 'rg --files --hidden --glob "!.git" --glob ".adshidtadka/**"'}))
+      \ call fzf#vim#files(<q-args>,
+      \   fzf#vim#with_preview({'source': 'rg --files --hidden --glob "!.git" --glob ".adshidtadka/**"'}, 'right:60%:wrap'))
 Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/vim-gin'
 nnoremap <C-k>gs :<C-u>GinStatus<CR>
