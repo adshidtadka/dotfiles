@@ -52,11 +52,11 @@ nnoremap <C-k>rg :<C-u>RipGrep<CR>
 nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --hidden --glob "!.git" --color=always '.shellescape(<q-args>), 0,
+      \   'rg --column --line-number --no-heading --hidden --no-ignore-global --glob "!.git" --color=always '.shellescape(<q-args>), 0,
       \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=* RipGrepDistinct
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --hidden --glob "!.git" --color=always -i '.shellescape(<q-args>), 0,
+      \   'rg --column --line-number --no-heading --hidden --no-ignore-global --glob "!.git" --color=always -i '.shellescape(<q-args>), 0,
       \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
 command! -bang -nargs=? GFiles
       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
