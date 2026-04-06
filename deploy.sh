@@ -68,7 +68,11 @@ ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.claude/CLAUDE.md
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/AGENTS.md
 ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
 mkdir -p "$HOME"/.cursor/rules
-ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.cursor/rules/global.mdc
+{
+  printf '%s\n' '---' 'description:' 'globs:' 'alwaysApply: true' '---'
+  cat "$DOTPATH"/AGENTS.md
+} > "$HOME"/.cursor/rules/global.mdc
+echo "$HOME/.cursor/rules/global.mdc generated from AGENTS.md"
 echo
 
 echo "configuring git ..."
