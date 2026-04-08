@@ -20,3 +20,4 @@
   - assigneeは `adshidtadka` にする
   - PRのtitleとdescriptionはプロジェクトの `.github/pull_request_template.md` に従って記載する（テンプレートがない場合はWhy/What/Testing Strategyの構成で書く）
 - 「CI通ったらマージして」と依頼された場合は `gh pr merge <PR番号> --squash --auto` を使う
+- `git push` 完了後、現在のブランチに紐づくPRがあれば `gh pr view --web --json url` でURLを取得し、リンクを表示すること
