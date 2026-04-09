@@ -3,7 +3,7 @@ if !exists('g:env')
 endif
 
 
-function! s:echomsg(hl, msg) "{{{1
+function! s:echomsg(hl, msg)
     execute 'echohl' a:hl
     try
         echomsg a:msg
@@ -12,21 +12,21 @@ function! s:echomsg(hl, msg) "{{{1
     endtry
 endfunction
 
-function! Error(msg) abort "{{{1
+function! Error(msg) abort
     echohl ErrorMsg
     echo 'ERROR: ' . a:msg
     echohl None
     return g:false
 endfunction
 
-function! Warn(msg) abort "{{{1
+function! Warn(msg) abort
     echohl WarningMsg
     echo 'WARNING: ' . a:msg
     echohl None
     return g:true
 endfunction
 
-function! s:rm(...) "{{{1
+function! s:rm(...)
     let files = []
     for file in a:0 ? map(copy(a:000), 'expand(v:val)') : split(simplify(expand('%:p')))
 
@@ -54,7 +54,7 @@ function! s:rm(...) "{{{1
     echo len(files) ? "Removed " . string(files) . "!" : "Removed nothing"
 endfunction
 
-function! s:rand(n) "{{{1
+function! s:rand(n)
     let match_end = matchend(reltimestr(reltime()), '\d\+\.') + 1
     return reltimestr(reltime())[match_end : ] % (a:n + 1)
 endfunction
@@ -75,7 +75,7 @@ function! Random(n) abort
     return s:random_string(a:n)
 endfunction
 
-function! s:mkdir(dir) "{{{1
+function! s:mkdir(dir)
     if !exists("*mkdir")
         return g:false
     endif
@@ -92,7 +92,7 @@ function! Mkdir(dir) abort
     return s:mkdir(a:dir)
 endfunction
 
-function! s:has_plugin(name) "{{{1
+function! s:has_plugin(name)
     " Check {name} plugin whether there is in the runtime path
     let nosuffix = a:name =~? '\.vim$' ? a:name[:-5] : a:name
     let suffix   = a:name =~? '\.vim$' ? a:name      : a:name . '.vim'
@@ -103,7 +103,7 @@ function! s:has_plugin(name) "{{{1
                 \   || globpath(&rtp, 'autoload/' . tolower(suffix), 1) != ''
 endfunction
 
-function! GetBufname(bufnr, ...) "{{{1
+function! GetBufname(bufnr, ...)
     let bufname = bufname(a:bufnr)
     if bufname =~# '^[[:alnum:].+-]\+:\\\\'
         let bufname = substitute(bufname, '\\', '/', 'g')
@@ -204,6 +204,4 @@ function! s:ls(path, bang)
     return g:true
 endfunction
 
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:
 

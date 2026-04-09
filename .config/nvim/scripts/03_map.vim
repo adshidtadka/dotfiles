@@ -2,7 +2,7 @@ if !exists('g:env')
   finish
 endif
 
-" Common {{{1
+" Common
 
 " Use backslash
 if IsMac()
@@ -57,7 +57,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
 
-" Tabpages {{{1
+" Tabpages
 " The prefix key.
 nnoremap [Tag] <Nop>
 nmap <leader>t [Tag]

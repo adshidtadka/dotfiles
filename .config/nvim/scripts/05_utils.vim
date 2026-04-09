@@ -2,7 +2,7 @@ if !exists('g:env')
   finish
 endif
 
-function! s:root() "{{{1
+function! s:root()
   let me = expand('%:p:h')
   let gitd = finddir('.git', me.';')
   if empty(gitd)
@@ -15,7 +15,7 @@ function! s:root() "{{{1
 endfunction
 command! Root call <SID>root()
 
-" Restore cursor position {{{1
+" Restore cursor position
 if g:env.vimrc.restore_cursor_position == g:true
   function! s:restore_cursor_postion()
     if line("'\"") > 0 && line("'\"") <= line("$")
@@ -29,6 +29,4 @@ if g:env.vimrc.restore_cursor_position == g:true
   augroup END
 endif
 
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:
 

@@ -13,6 +13,4 @@ command! -bang -bar -complete=file -nargs=? Jis       Iso2022jp<bang> <args>
 command! -bang -bar -complete=file -nargs=? Sjis      Cp932<bang> <args>
 command! -bang -bar -complete=file -nargs=? Unicode   Utf16<bang> <args>
 
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:
 
