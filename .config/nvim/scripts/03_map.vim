@@ -39,6 +39,10 @@ vnoremap gk k
 
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
 cnoremap <C-k> <UP>
 cnoremap <C-j> <DOWN>
 cnoremap <C-l> <RIGHT>
