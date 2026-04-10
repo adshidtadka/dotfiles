@@ -18,3 +18,4 @@
   - PRのtitleとdescriptionはプロジェクトの `.github/pull_request_template.md` に従って記載する（テンプレートがない場合はWhy/What/Testing Strategyの構成で書く）
 - 「CI通ったらマージして」と依頼された場合は `gh pr merge <PR番号> --squash --auto` を使う
 - `git push` 完了後、現在のブランチに紐づくPRがあれば `gh pr view --web --json url` でURLを取得し、リンクを表示すること
+- PR作成・push後は必ず `gh pr diff <PR番号> --name-only` で変更ファイル一覧を確認し、意図しないファイルが含まれていないかチェックすること。余分なファイルが含まれていた場合はブランチを `git rebase --onto` で整理してforce pushする
