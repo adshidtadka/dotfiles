@@ -61,18 +61,18 @@ echo "loading .zshrc ..."
 ./_zshrc/deploy.sh
 echo
 
-echo "loading AGENTS.md ..."
+echo "loading GEMINI.md ..."
 mkdir -p "$HOME"/.claude
 mkdir -p "$HOME"/.codex
-ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.claude/CLAUDE.md
-ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/AGENTS.md
-ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
+ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.claude/CLAUDE.md
+ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.codex/GEMINI.md
+ln -snfv "$HOME"/.codex/GEMINI.md "$HOME"/.codex/instructions.md
 mkdir -p "$HOME"/.cursor/rules
 {
   printf '%s\n' '---' 'description:' 'globs:' 'alwaysApply: true' '---'
-  cat "$DOTPATH"/AGENTS.md
+  cat "$DOTPATH"/GEMINI.md
 } > "$HOME"/.cursor/rules/global.mdc
-echo "$HOME/.cursor/rules/global.mdc generated from AGENTS.md"
+echo "$HOME/.cursor/rules/global.mdc generated from GEMINI.md"
 echo
 
 echo "configuring git ..."
