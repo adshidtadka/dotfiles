@@ -70,10 +70,14 @@ ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/AGENTS.md
 ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.gemini/AGENTS.md
 mkdir -p "$HOME"/.cursor/rules
+# global.mdc が AGENTS.md への symlink だと、リダイレクト先と cat の入力が同一ファイルになり
+# デッドロックや無限待ちになる。一時ファイル経由で必ず別パスに書く。
+tmp="$(mktemp "${TMPDIR:-/tmp}/dotfiles-global.mdc.XXXXXX")"
 {
   printf '%s\n' '---' 'description:' 'globs:' 'alwaysApply: true' '---'
   cat "$DOTPATH"/AGENTS.md
-} > "$HOME"/.cursor/rules/global.mdc
+} > "$tmp"
+mv -f "$tmp" "$HOME"/.cursor/rules/global.mdc
 echo "$HOME/.cursor/rules/global.mdc generated from AGENTS.md"
 echo
 
