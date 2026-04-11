@@ -70,8 +70,6 @@ ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/AGENTS.md
 ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.gemini/AGENTS.md
 mkdir -p "$HOME"/.cursor/rules
-# global.mdc が AGENTS.md への symlink のままだと、> と cat が同一実体を触って詰まる。
-# いったんパスを消してから書けば、新規の通常ファイルとして一発で書ける。
 rm -f "$HOME"/.cursor/rules/global.mdc
 {
   printf '%s\n' '---' 'description:' 'globs:' 'alwaysApply: true' '---'
