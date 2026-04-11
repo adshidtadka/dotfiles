@@ -64,9 +64,11 @@ echo
 echo "loading GEMINI.md ..."
 mkdir -p "$HOME"/.claude
 mkdir -p "$HOME"/.codex
+mkdir -p "$HOME"/.gemini
 ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.claude/CLAUDE.md
-ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.codex/GEMINI.md
-ln -snfv "$HOME"/.codex/GEMINI.md "$HOME"/.codex/instructions.md
+ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.codex/AGENTS.md
+ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
+ln -snfv "$DOTPATH"/GEMINI.md "$HOME"/.gemini/GEMINI.md
 mkdir -p "$HOME"/.cursor/rules
 {
   printf '%s\n' '---' 'description:' 'globs:' 'alwaysApply: true' '---'
