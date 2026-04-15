@@ -68,7 +68,7 @@ mkdir -p "$HOME"/.gemini
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.claude/CLAUDE.md
 ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.codex/AGENTS.md
 ln -snfv "$HOME"/.codex/AGENTS.md "$HOME"/.codex/instructions.md
-ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.gemini/AGENTS.md
+ln -snfv "$DOTPATH"/AGENTS.md "$HOME"/.gemini/GEMINI.md
 mkdir -p "$HOME"/.cursor/rules
 rm -f "$HOME"/.cursor/rules/global.mdc
 {
