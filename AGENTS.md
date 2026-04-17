@@ -20,3 +20,4 @@
 - `git push` 完了後、現在のブランチに紐づくPRがあれば `gh pr view --web --json url` でURLを取得し、リンクを表示すること
 - `git push` 完了後、現在のブランチに紐づくPRが既に存在する場合、変更内容に合わせてPRのtitleとdescriptionを書き換えること
 - PR作成・push後は必ず `gh pr diff <PR番号> --name-only` で変更ファイル一覧を確認し、意図しないファイルが含まれていないかチェックすること。余分なファイルが含まれていた場合はブランチを `git rebase --onto` で整理してforce pushする
+- force pushは使用しないこと。rebase後や履歴変更が必要な場合はユーザーに判断を仰ぐ。代替として、変更取り消しには `git revert`、developの取り込みには `git merge origin/develop` を使う
