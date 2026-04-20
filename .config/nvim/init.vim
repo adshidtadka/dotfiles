@@ -46,6 +46,7 @@ let g:fern#renderer = "nerdfont"
 Plug 'lambdalisue/fern-git-status.vim'
 let g:fern_git_status#disable_ignored = 1
 Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~90%' }
 nnoremap <C-k>f :<C-u>GFiles<CR>
 nnoremap <C-k>rg :<C-u>RipGrep<CR>
 nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
