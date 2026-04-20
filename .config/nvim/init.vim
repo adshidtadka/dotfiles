@@ -52,14 +52,14 @@ nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --no-ignore-global --glob "!.git" --color=always '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'down:60%:wrap'))
 command! -bang -nargs=* RipGrepDistinct
       \ call fzf#vim#grep(
       \   'rg --column --line-number --no-heading --hidden --no-ignore-global --glob "!.git" --color=always -i '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'down:60%:wrap'))
 command! -bang -nargs=? GFiles
       \ call fzf#vim#files(<q-args>,
-      \   fzf#vim#with_preview({'source': 'rg --files --hidden --no-ignore-global --glob "!.git"'}, 'right:60%:wrap'))
+      \   fzf#vim#with_preview({'source': 'rg --files --hidden --no-ignore-global --glob "!.git"'}, 'down:60%:wrap'))
 Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/vim-gin'
 nnoremap <C-k>gs :<C-u>GinStatus<CR>
