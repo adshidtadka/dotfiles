@@ -19,6 +19,9 @@ Session.vim
 tags
 .takaaki/*
 
+### AI agent 系（履歴・キャッシュが溜まる）
+.claude/
+
 ### 重い依存・ビルド成果物
 node_modules/
 .pnpm-store/
