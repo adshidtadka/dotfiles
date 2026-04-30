@@ -1,24 +1,10 @@
+.adshidtadka/*
+
+### Accidents prevention (also listed in .ignore for ripgrep)
 .DS_Store
-.python-version
-.lvimrc
 *~
-
-
-
-### https://raw.github.com/github/gitignore/5d896f6791c4257b74696714c66b2530b8d95a51/Global/vim.gitignore
-
-# swap
+# vim swap
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
 [._]s[a-v][a-z]
 [._]sw[a-p]
-# session
-Session.vim
-# temporary
-.netrwhist
-# auto-generated tag files
-tags
-
-
-.takaaki/*
-.adshidtadka/*

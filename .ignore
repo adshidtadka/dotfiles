@@ -1,0 +1,59 @@
+# ripgrep / fd / ag が読む追加 ignore。
+# .gitignore と同じ書式。
+# git とは無関係（git は .gitignore_global を見る）。
+
+### .gitignore_global と重複する事故防止系（rg でもヒット不要）
+.DS_Store
+*~
+# vim swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+### 旧 .gitignore_global から移動（rg では不要なやつ）
+.python-version
+.lvimrc
+Session.vim
+.netrwhist
+tags
+.takaaki/*
+
+### 重い依存・ビルド成果物
+node_modules/
+vendor/
+bower_components/
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.vercel/
+.output/
+
+### キャッシュ
+.cache/
+.parcel-cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+### カバレッジ
+coverage/
+.nyc_output/
+
+### lock files
+*.lock
+*-lock.json
+*-lock.yaml
+
+### ログ・minified
+*.log
+*.min.js
+*.min.css
+*.map
