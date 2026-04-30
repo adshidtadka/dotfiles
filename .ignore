@@ -24,6 +24,7 @@ tags
 .codex/
 .gemini/
 .copilot/
+.cursor/
 
 ### 重い依存・ビルド成果物
 node_modules/
