@@ -21,6 +21,8 @@ tags
 
 ### 重い依存・ビルド成果物
 node_modules/
+.pnpm-store/
+.pnpm/
 vendor/
 bower_components/
 dist/
