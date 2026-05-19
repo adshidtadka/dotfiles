@@ -47,6 +47,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<CR>", "<CR>:cclose<CR>", { buffer = true, silent = true })
+  end,
+})
+
 local function project_root(bufnr, markers)
   local fname = vim.api.nvim_buf_get_name(bufnr)
   local dir = vim.fs.dirname(fname)

@@ -16,7 +16,7 @@ set t_Co=256
 colorscheme kanagawa
 syntax on
 
-" StatusLine {{{1
+" StatusLine
 set laststatus=2
 
 lua << LUALINE
@@ -94,11 +94,11 @@ require("lualine").setup({
 })
 LUALINE
 
-" Tabpages {{{1
+" Tabpages
 set showtabline=2
 set tabline=%!MakeTabLine()
 
-function! s:tabpage_label(n) "{{{3
+function! s:tabpage_label(n)
   let n = a:n
   let bufnrs = tabpagebuflist(n)
   let curbufnr = bufnrs[tabpagewinnr(n) - 1]
@@ -123,7 +123,7 @@ function! s:tabpage_label(n) "{{{3
   return '%' . a:n . 'T' . label . '%T%#TabLineFill#'
 endfunction
 
-function! MakeTabLine() "{{{3
+function! MakeTabLine()
   let titles = map(range(1, tabpagenr('$')), 's:tabpage_label(v:val)')
   let sep = ' | '
   let tabs = join(titles, sep) . sep . '%#TabLineFill#%T'
@@ -135,7 +135,7 @@ function! MakeTabLine() "{{{3
 endfunction
 
 
-" Cursor line/column {{{1
+" Cursor line/column
 set cursorline
 augroup auto-cursorcolumn-appear
   autocmd!
@@ -168,20 +168,20 @@ augroup auto-cursorcolumn-appear
   endfunction
 augroup END
 
-augroup multi-window-toggle-cursor "{{{1
+augroup multi-window-toggle-cursor
   autocmd!
   autocmd WinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline nocursorcolumn
 augroup END 
 
-augroup cursor-highlight-emphasis "{{{1
+augroup cursor-highlight-emphasis
   autocmd!
   autocmd CursorMoved,CursorMovedI,WinLeave * hi! link CursorLine CursorLine | hi! link CursorColumn CursorColumn
   autocmd CursorHold,CursorHoldI            * hi! link CursorLine Visual     | hi! link CursorColumn Visual
 augroup END
 
 " ZEN-KAKU
-" Display zenkaku-space {{{1
+" Display zenkaku-space
 augroup hilight-idegraphic-space
   autocmd!
   "autocmd VimEnter,ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
@@ -200,6 +200,4 @@ function! s:hl_zenkaku_space()
   syntax match ZenkakuSpace containedin=ALL /　/
 endfunction
 
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:
 

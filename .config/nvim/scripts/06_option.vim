@@ -234,5 +234,3 @@ set backupdir=.,~/tmp,~/
 set splitbelow
 
 
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:

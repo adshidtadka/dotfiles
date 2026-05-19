@@ -20,7 +20,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'andymass/vim-matchup'
 let g:loaded_matchit = 1
-Plug 'jonathanfilip/vim-lucius'
 Plug 'w0ng/vim-hybrid'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'tpope/vim-surround'
@@ -47,19 +46,21 @@ let g:fern#renderer = "nerdfont"
 Plug 'lambdalisue/fern-git-status.vim'
 let g:fern_git_status#disable_ignored = 1
 Plug 'junegunn/fzf', { 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~90%' }
 nnoremap <C-k>f :<C-u>GFiles<CR>
 nnoremap <C-k>rg :<C-u>RipGrep<CR>
 nnoremap <C-k>rd :<C-u>RipGrepDistinct<CR>
 command! -bang -nargs=* RipGrep
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --hidden --glob "!.git" --color=always '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
+      \   'rg --column --line-number --no-heading --hidden --no-ignore-vcs --ignore-file ~/.ignore --glob "!.git" --max-columns=200 --max-columns-preview --color=always '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'down:60%:wrap'))
 command! -bang -nargs=* RipGrepDistinct
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --hidden --glob "!.git" --color=always -i '.shellescape(<q-args>), 0,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:wrap'))
+      \   'rg --column --line-number --no-heading --hidden --no-ignore-vcs --ignore-file ~/.ignore --glob "!.git" --max-columns=200 --max-columns-preview --color=always -i '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'down:60%:wrap'))
 command! -bang -nargs=? GFiles
-      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%:wrap'))
+      \ call fzf#vim#files(<q-args>,
+      \   fzf#vim#with_preview({'source': 'rg --files --hidden --no-ignore-vcs --ignore-file ~/.ignore --glob "!.git"'}, 'down:60%:wrap'))
 Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/vim-gin'
 nnoremap <C-k>gs :<C-u>GinStatus<CR>

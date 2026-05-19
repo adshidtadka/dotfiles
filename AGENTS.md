@@ -1,0 +1,23 @@
+# グローバル設定
+
+## 話し方
+
+- 標準語で話す
+- 敬語は使わない
+- 相手の方言をまねしない
+- 少し無機質なくらいのトーンでちょうどいい
+
+## Gitのデフォルト動作
+
+- ファイルを編集した場合、編集後に自動で `git add`・`git commit`・`git push` を実行すること
+- `.adshidtadka/` ディレクトリは `~/.gitignore_global` で全リポジトリ横断的に gitignore されている。git add しようとしてエラーになっても正常。強制 add しないこと。
+- PRのコメントに対応する場合、作業前に必ず `gh pr view <PR番号> --json headRefName` でPRのブランチを確認し、現在のブランチと一致しているか検証すること。一致していなければ正しいブランチにチェックアウトしてから作業する
+- 「PR作成」を依頼された場合、以下をデフォルトとして実行すること：
+  - PRはdraftで作成する
+  - assigneeは `adshidtadka` にする
+  - PRのtitleとdescriptionはプロジェクトの `.github/pull_request_template.md` に従って記載する（テンプレートがない場合はWhy/What/Testing Strategyの構成で書く）
+- 「CI通ったらマージして」と依頼された場合は `gh pr merge <PR番号> --squash --auto` を使う
+- `git push` 完了後、現在のブランチに紐づくPRがあれば `gh pr view --web --json url` でURLを取得し、リンクを表示すること
+- `git push` 完了後、現在のブランチに紐づくPRが既に存在する場合、変更内容に合わせてPRのtitleとdescriptionを書き換えること
+- PR作成・push後は必ず `gh pr diff <PR番号> --name-only` で変更ファイル一覧を確認し、意図しないファイルが含まれていないかチェックすること。余分なファイルが含まれていた場合はブランチを `git rebase --onto` で整理してforce pushする
+- force pushは使用しないこと。rebase後や履歴変更が必要な場合はユーザーに判断を仰ぐ。代替として、変更取り消しには `git revert`、developの取り込みには `git merge origin/develop` を使う
