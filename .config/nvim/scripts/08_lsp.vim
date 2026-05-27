@@ -106,4 +106,30 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+local ok_lint, lint = pcall(require, "lint")
+if ok_lint then
+  lint.linters_by_ft = {
+    javascript = { "eslint_d" },
+    javascriptreact = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
+  }
+
+  vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+    group = group,
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.mjs", "*.cjs" },
+    callback = function()
+      lint.try_lint()
+    end,
+  })
+end
 EOF

@@ -17,6 +17,7 @@ brew "clang-format"
 brew "cmake"
 brew "dasel"
 brew "docker", link: false
+brew "eslint_d"
 brew "exa"
 brew "fd"
 brew "ffmpeg"
