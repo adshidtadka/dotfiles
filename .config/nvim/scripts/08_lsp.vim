@@ -124,11 +124,6 @@ if ok_lint then
     typescriptreact = { "eslint_d" },
   }
 
-  -- eslint_d はカレントディレクトリ基準でローカルの eslint を解決する。
-  -- nvim の cwd がプロジェクト外（monorepo ルート等）だと同梱の新しい eslint に
-  -- フォールバックし、eslint-config-next の rushstack patch が壊れて
-  -- "Cannot read config file" を吐く。バッファごとにプロジェクトルートを
-  -- cwd として渡すことで、必ずローカルの eslint を使わせる。
   local eslint_root_markers = {
     "eslint.config.js",
     "eslint.config.mjs",
