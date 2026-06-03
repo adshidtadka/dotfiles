@@ -124,11 +124,35 @@ if ok_lint then
     typescriptreact = { "eslint_d" },
   }
 
+  -- eslint_d はカレントディレクトリ基準でローカルの eslint を解決する。
+  -- nvim の cwd がプロジェクト外（monorepo ルート等）だと同梱の新しい eslint に
+  -- フォールバックし、eslint-config-next の rushstack patch が壊れて
+  -- "Cannot read config file" を吐く。バッファごとにプロジェクトルートを
+  -- cwd として渡すことで、必ずローカルの eslint を使わせる。
+  local eslint_root_markers = {
+    "eslint.config.js",
+    "eslint.config.mjs",
+    "eslint.config.cjs",
+    "eslint.config.ts",
+    ".eslintrc",
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.json",
+    ".eslintrc.yml",
+    ".eslintrc.yaml",
+    "package.json",
+  }
+
   vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
     group = group,
     pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.mjs", "*.cjs" },
-    callback = function()
-      lint.try_lint()
+    callback = function(ev)
+      local root = vim.fs.root(ev.buf, eslint_root_markers)
+      if root then
+        lint.try_lint(nil, { cwd = root })
+      else
+        lint.try_lint()
+      end
     end,
   })
 end
