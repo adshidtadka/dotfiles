@@ -106,4 +106,49 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+local ok_lint, lint = pcall(require, "lint")
+if ok_lint then
+  lint.linters_by_ft = {
+    javascript = { "eslint_d" },
+    javascriptreact = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
+  }
+
+  local eslint_root_markers = {
+    "eslint.config.js",
+    "eslint.config.mjs",
+    "eslint.config.cjs",
+    "eslint.config.ts",
+    ".eslintrc",
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.json",
+    ".eslintrc.yml",
+    ".eslintrc.yaml",
+    "package.json",
+  }
+
+  vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+    group = group,
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.mjs", "*.cjs" },
+    callback = function(ev)
+      local root = vim.fs.root(ev.buf, eslint_root_markers)
+      if root then
+        lint.try_lint(nil, { cwd = root })
+      else
+        lint.try_lint()
+      end
+    end,
+  })
+end
 EOF
