@@ -2,7 +2,9 @@
 
 # sheldon - プラグイン管理
 # 設定ファイル: ~/.config/sheldon/plugins.toml
-eval "$(sheldon source)"
+if command -v sheldon >/dev/null 2>&1; then
+  eval "$(sheldon source)"
+fi
 
 # zsh-autosuggestions の設定
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4c4c4c"
