@@ -41,7 +41,15 @@ export DOTPATH="$HOME/dotfiles"
 export PATH=$HOME/.local/bin:$PATH
 
 # brew
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
+fi
 
 # ruby, rails
 export PATH="$HOME/.rbenv/bin:$PATH"
