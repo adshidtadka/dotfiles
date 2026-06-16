@@ -151,4 +151,25 @@ if ok_lint then
     end,
   })
 end
+
+-- Format JSON on save with jq (preserves key order, 2-space indent).
+if vim.fn.executable("jq") == 1 then
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = group,
+    pattern = { "*.json" },
+    callback = function(ev)
+      local lines = vim.api.nvim_buf_get_lines(ev.buf, 0, -1, false)
+      local input = table.concat(lines, "\n")
+      local formatted = vim.fn.systemlist({ "jq", "." }, input)
+      if vim.v.shell_error ~= 0 then
+        return
+      end
+      if not vim.deep_equal(lines, formatted) then
+        local view = vim.fn.winsaveview()
+        vim.api.nvim_buf_set_lines(ev.buf, 0, -1, false, formatted)
+        vim.fn.winrestview(view)
+      end
+    end,
+  })
+end
 EOF
