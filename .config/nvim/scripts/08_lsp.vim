@@ -152,24 +152,45 @@ if ok_lint then
   })
 end
 
--- Format JSON on save with jq (preserves key order, 2-space indent).
-if vim.fn.executable("jq") == 1 then
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = group,
-    pattern = { "*.json" },
-    callback = function(ev)
-      local lines = vim.api.nvim_buf_get_lines(ev.buf, 0, -1, false)
-      local input = table.concat(lines, "\n")
-      local formatted = vim.fn.systemlist({ "jq", "." }, input)
-      if vim.v.shell_error ~= 0 then
-        return
-      end
-      if not vim.deep_equal(lines, formatted) then
-        local view = vim.fn.winsaveview()
-        vim.api.nvim_buf_set_lines(ev.buf, 0, -1, false, formatted)
-        vim.fn.winrestview(view)
-      end
-    end,
-  })
+-- Format with prettier on save.
+-- Prefer the project-local prettier (respects its version and config),
+-- then fall back to a global prettier/prettierd on PATH.
+local function resolve_prettier(bufnr)
+  local fname = vim.api.nvim_buf_get_name(bufnr)
+  local dir = vim.fs.dirname(fname)
+  local local_bin = vim.fs.find("node_modules/.bin/prettier", { path = dir, upward = true })[1]
+  if local_bin and vim.fn.executable(local_bin) == 1 then
+    return { local_bin }
+  end
+  for _, bin in ipairs({ "prettierd", "prettier" }) do
+    if vim.fn.executable(bin) == 1 then
+      return { bin }
+    end
+  end
+  return nil
 end
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = group,
+  pattern = { "*.json", "*.jsonc", "*.css", "*.scss", "*.html", "*.yaml", "*.yml", "*.md", "*.graphql" },
+  callback = function(ev)
+    local cmd = resolve_prettier(ev.buf)
+    if not cmd then
+      return
+    end
+    table.insert(cmd, "--stdin-filepath")
+    table.insert(cmd, vim.api.nvim_buf_get_name(ev.buf))
+    local lines = vim.api.nvim_buf_get_lines(ev.buf, 0, -1, false)
+    local input = table.concat(lines, "\n")
+    local formatted = vim.fn.systemlist(cmd, input)
+    if vim.v.shell_error ~= 0 then
+      return
+    end
+    if not vim.deep_equal(lines, formatted) then
+      local view = vim.fn.winsaveview()
+      vim.api.nvim_buf_set_lines(ev.buf, 0, -1, false, formatted)
+      vim.fn.winrestview(view)
+    end
+  end,
+})
 EOF
