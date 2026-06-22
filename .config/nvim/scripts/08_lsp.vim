@@ -84,6 +84,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Resolve pyright-langserver, preferring Homebrew over a pyenv shim.
+-- The pyenv shim only works when pyright happens to be installed in the
+-- active Python version, so it breaks when switching versions.
+local function resolve_pyright()
+  for _, bin in ipairs({
+    "/opt/homebrew/bin/pyright-langserver",
+    "/home/linuxbrew/.linuxbrew/bin/pyright-langserver",
+    "/usr/local/bin/pyright-langserver",
+  }) do
+    if vim.fn.executable(bin) == 1 then
+      return bin
+    end
+  end
+  return "pyright-langserver"
+end
+
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
   pattern = { "python" },
@@ -91,7 +107,7 @@ vim.api.nvim_create_autocmd("FileType", {
     set_lsp_maps(args.buf)
     vim.lsp.start({
       name = "pyright",
-      cmd = { "pyright-langserver", "--stdio" },
+      cmd = { resolve_pyright(), "--stdio" },
       root_dir = project_root(args.buf, {
         "pyproject.toml",
         "setup.py",

@@ -112,6 +112,7 @@ brew "openapi-generator"
 brew "pdftk-java"
 brew "poppler"
 brew "portaudio"
+brew "pyright"
 brew "watchman"
 brew "wireshark"
 
