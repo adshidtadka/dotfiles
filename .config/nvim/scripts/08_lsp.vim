@@ -86,6 +86,27 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
+  pattern = { "python" },
+  callback = function(args)
+    set_lsp_maps(args.buf)
+    vim.lsp.start({
+      name = "pyright",
+      cmd = { "pyright-langserver", "--stdio" },
+      root_dir = project_root(args.buf, {
+        "pyproject.toml",
+        "setup.py",
+        "setup.cfg",
+        "requirements.txt",
+        "Pipfile",
+        ".git",
+      }),
+      capabilities = capabilities,
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
   pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   callback = function(args)
     set_lsp_maps(args.buf)
