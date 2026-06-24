@@ -161,6 +161,21 @@ if ok_lint then
     typescriptreact = { "eslint_d" },
   }
 
+  -- Prefer the project-local eslint, walking up from the buffer's directory.
+  -- The global (Homebrew) eslint_d bundles its own eslint and resolves plugins
+  -- from the project root, which breaks under pnpm's non-hoisted node_modules
+  -- (e.g. eslint-plugin-react-hooks declared by eslint-config-next). The
+  -- project-local eslint resolves plugins relative to the config file and works.
+  local function resolve_eslint(bufnr)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local dir = vim.fs.dirname(fname)
+    local local_bin = vim.fs.find("node_modules/.bin/eslint", { path = dir, upward = true })[1]
+    if local_bin and vim.fn.executable(local_bin) == 1 then
+      return local_bin
+    end
+    return nil
+  end
+
   local eslint_root_markers = {
     "eslint.config.js",
     "eslint.config.mjs",
@@ -180,10 +195,16 @@ if ok_lint then
     pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.mjs", "*.cjs" },
     callback = function(ev)
       local root = vim.fs.root(ev.buf, eslint_root_markers)
+      local linter = "eslint_d"
+      local local_eslint = resolve_eslint(ev.buf)
+      if local_eslint then
+        lint.linters.eslint.cmd = local_eslint
+        linter = "eslint"
+      end
       if root then
-        lint.try_lint(nil, { cwd = root })
+        lint.try_lint(linter, { cwd = root })
       else
-        lint.try_lint()
+        lint.try_lint(linter)
       end
     end,
   })
