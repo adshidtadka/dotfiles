@@ -23,3 +23,7 @@ tags
 # Neovim - auto-generated files
 .config/nvim/spell/*.add.spl
 .config/nvim/undo/
+
+# Claude Code - ローカル state は無視、共有設定だけ追跡
+.claude/*
+!.claude/settings.json
