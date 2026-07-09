@@ -355,6 +355,9 @@ function _collect_dir_timestamps() {
     done
 }
 
+# emacsキーマップを有効にする（peco等のキーバインドより前に実行する必要がある）
+bindkey -e
+
 function peco-zoxide() {
     local destination
     if ! command_exists zoxide || ! command_exists peco ; then
@@ -457,6 +460,3 @@ bindkey '^W^A' peco-aws-profile
 function awslogin() {
     aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
 }
-
-# ctrlを有効にする
-bindkey -e
