@@ -14,6 +14,7 @@ brew "bat"
 brew "clang-format"
 brew "cmake"
 brew "dasel"
+brew "deno"
 brew "docker", link: false
 brew "eslint_d"
 brew "eza"
