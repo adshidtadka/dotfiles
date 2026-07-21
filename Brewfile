@@ -68,7 +68,6 @@ brew "ruby-build"
 brew "rust"
 brew "rustup"
 brew "virtualenv"
-brew "yarn"
 
 # Databases
 brew "mongodb/brew/mongodb-community"
